@@ -1,8 +1,10 @@
 # oca-8-prac
 ##Chapter 1: 
 * Java Building Blocks
+
 ##Chapter 2: 
-* Operators and Statements: if-then, switch, while, for
+* Operators and Statements: if-then, switch, while, for 
+
 ##Chapter 3:
 * Core Java APIs: Strings, String Builder, equality, arrays, arraylist and dates
 ##Chapter 4:
