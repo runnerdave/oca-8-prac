@@ -7,11 +7,21 @@
 
 ##Chapter 3:
 * Core Java APIs: Strings, String Builder, equality, arrays, arraylist and dates
+
 ##Chapter 4:
 * Methods and Encapsulation
  * Access modifiers
  * Overloading methods
  * Constructors
  * Lambdas
+ 
 ##Chapter 5:
 * Class Design
+ * Inheritance
+ * Abstract Classes
+ * Interfaces
+ * Polymorphism
+ 
+##Chapter 6:
+* Exceptions 
+ 
