@@ -14,4 +14,8 @@ public class SlingShot extends Sling {
 		super("called super constructor");
 		System.out.println("see no args!!");
 	}
+
+     protected void getJewels() {
+          System.out.println("parent");
+     }
 }

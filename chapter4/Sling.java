@@ -14,4 +14,8 @@ public class Sling {
 	public Sling(String s) {
 		System.out.println("created Sling with string:"+s);
 	}
+
+     void getJewels() {
+          System.out.println("grand parent");
+     }
 }
