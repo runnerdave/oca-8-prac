@@ -3,8 +3,28 @@ import a.AccessTest;
 public class AccessTester extends AccessTest{
 	public static void main(String[] args) {
 		AccessTest ref = new AccessTest();
+
+		System.out.println("Visibility prac:");
+		System.out.println("1st try:");
+		System.out.println("ref d:" + ref.d());
+		//ref.c(); NOT ACCESIBLE
+		//System.out.println("ref a:" + ref.a); NOT VISIBLE FROM OUTSIDE PACKAGE
+
+		System.out.println("2nd try:");
+		AccessTester ref2 = new AccessTester();
+		ref2.c();
+
+		System.out.println("3rd try:");
+		AccessTest ref3 = new AccessTester();
+		//ref3.c(); NOT VALID EITHER
+
+		System.out.println("4th try:");
+		SubAccessTester ref4 = new SubAccessTester();
+		ref4.c();
 	} 
 } 
+
+class SubAccessTester extends AccessTester{ } 
 
 /*
 
