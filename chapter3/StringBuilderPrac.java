@@ -21,6 +21,22 @@ public class StringBuilderPrac {
 			System.out.println(ioob.getMessage());
 			//ioob.printStackTrace();
 		}
+
+		System.out.println("==practicing method chaining==");
+		System.out.println("BEFORE contents of sb:" + sb);
+		sb.append("a").append("asdf").insert(2, "asdf");
+		/*
+		same as:
+		sb.append("a"); 
+		sb.append("asdf"); 
+		sb.insert(2, "asdf")
+		*/
+		System.out.println("AFTER contents of sb:" + sb);
+
+		//NOT VALID sb.append("a").substring(0, 4).insert(2, "asdf");  
+		//The following is valid though:  
+		String str = sb.append("a").insert(2, "asdf").substring(0, 4);
+		System.out.println("contents of str:" + sb);
 	}
 
 }

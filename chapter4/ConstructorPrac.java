@@ -11,9 +11,9 @@ public class ConstructorPrac {
 
 	public static void main(String[] args){
 		ConstructorPrac cp = new ConstructorPrac();
-//		cp.fly(1,2,3);
+		cp.fly(1,2,3);
 		int[] i = {1,2,3};
-//		cp.fly(i);
+		cp.fly(i);
 		cp.fly(new int[]{1,2});
 		Rope.swing();
           System.out.println(Rope.LENGTH);//15
@@ -25,6 +25,9 @@ public class ConstructorPrac {
 		rope.swing();
           rope = new Rope();
           rope.Rope();
+          System.out.println("brand new rope length:" + Rope.LENGTH);
+          System.out.println("brand new rope again:" + new Rope().LENGTH);
+
 
           System.out.println("=================");
           System.out.println("Time for slings:");

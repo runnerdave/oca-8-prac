@@ -1,4 +1,4 @@
-public class SwitchSample {
+public class SwitchSampleContinue {
 	public static void main(String[] args) {
 		FIRST_CHAR_LOOP: for (int a = 1; a <= 4; a++) {
 			for (char x = 'a'; x <= 'c'; x++) {
