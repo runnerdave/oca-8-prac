@@ -12,5 +12,11 @@ public class CharSample {
 		System.out.println("Should print -\u00BF- ¿:" + (char)191);
 		System.out.println("Should print -\u00F1- ñ:" + (char)241);
 
+		System.out.println("Should print (char)-1 :" + (char)-1);
+		System.out.println("Should print (char)-2 :" + (char)-2);
+
+		int i = 'a';
+		System.out.println("Should print i='a' :" + i);		
+
 	}
 }

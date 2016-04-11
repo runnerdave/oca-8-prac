@@ -54,17 +54,44 @@ public class SwitchTypesCombos {
 				System.out.println("nothing!");
 		}
 
-		System.out.println("==CASE 2: float to int, k = 49f throws exception");
-		float k = 49f;
-		switch(k) {
-			case 49f:
-				System.out.println("is 49f or 49");
-				break;
-			case '2':
-				System.out.println("is 2");
-				break;
+		float k = 49.0f;
+		System.out.println("==CASE 2: float to int, k = 49f does not compile:" + k);		
+		// switch(k) {
+		// 	case 49.0f:
+		// 		System.out.println("is 49f or 49");
+		// 		break;
+		// 	default:
+		// 		System.out.println("nothing!");
+		// }
+
+		byte l = 49;	
+		System.out.println("==CASE 3: byte to float, l = 49 does not compile:" + l);
+		switch(l) {
+			// case 49.0f:
+			// 	System.out.println("is 49f or 49");
+			// 	break;
 			default:
-				System.out.println("nothing!");
+				System.out.println("case 3 - nothing!");
+		}
+
+		char ch = 'x';	
+		final byte b = 120;	
+		System.out.println("==CASE 4(the good one): char to byte \"120\", ch = 'x':" + ch + " to int:" + (int)ch);
+		switch(ch){
+	 			case b :
+	 				System.out.println("120"); 
+					break; 
+	  			default:
+	  				System.out.println("default");
+		}
+		System.out.println("==CASE 4(the bad one): char to byte \"-1\", ch = 'x':" + ch + " to int:" + (int)ch);		
+		switch(ch){
+				// case -1 :
+				// 	System.out.println("-1"); 
+				// 	break; 
+					// This will not compile : "possible loss of precision"
+				default:
+					System.out.println("default");
 		}
 	}
 
