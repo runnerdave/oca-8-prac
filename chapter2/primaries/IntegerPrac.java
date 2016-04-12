@@ -7,6 +7,9 @@ public class IntegerPrac {
 		System.out.println("binary representation of i=2:" + Integer.toBinaryString(i));
 		System.out.println("binary representation of i=-2:" + Integer.toBinaryString(-i));
 
+		i = new Integer(4);
+		System.out.println("Can int receive Integer?:" + (i==4));
+
 		short s = 3;
 		System.out.println("Should print s=3:" + s);
 		i = s;
