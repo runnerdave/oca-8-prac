@@ -24,7 +24,7 @@ public class StringBuilderPrac {
 
 		System.out.println("==practicing method chaining==");
 		System.out.println("BEFORE contents of sb:" + sb);
-		sb.append("a").append("asdf").insert(2, "asdf");
+		sb.append("a").append("bcd").insert(2, "a");
 		/*
 		same as:
 		sb.append("a"); 
@@ -37,6 +37,9 @@ public class StringBuilderPrac {
 		//The following is valid though:  
 		String str = sb.append("a").insert(2, "asdf").substring(0, 4);
 		System.out.println("contents of str:" + sb);
+
+		sb.append(false);
+		System.out.println("append false contents of sb:" + sb);
 	}
 
 }

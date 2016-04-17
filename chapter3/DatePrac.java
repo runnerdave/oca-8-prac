@@ -29,7 +29,12 @@ public class DatePrac {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM dd");
 		System.out.println("formatting current time using yyyy MM dd pattern:" + formatter.format(myDate));
 		System.out.println("formatting current time using FormatStyle.MEDIUM:" + formatter.format(myDate));
-		LocalDate myDate2 = LocalDate.of(1976, 2, 35);
-		System.out.println("print out a date of 35/2/1976:" + myDate2);//throws exception
+		//LocalDate myDate2 = LocalDate.of(1976, 2, 35);
+		//System.out.println("print out a date of 35/2/1976:" + myDate2);//throws exception
+
+		System.out.println("========Playing with instant:");
+		Instant now = Instant.now();
+		Instant oneNanoLater = Instant.now().plusNanos(1);
+		System.out.println("instant of now compared with instant one nano later:" + now.toString() + "|" + oneNanoLater.toString());
 	}
 }
