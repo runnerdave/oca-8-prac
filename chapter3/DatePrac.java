@@ -35,6 +35,10 @@ public class DatePrac {
 		System.out.println("========Playing with instant:");
 		Instant now = Instant.now();
 		Instant oneNanoLater = Instant.now().plusNanos(1);
-		System.out.println("instant of now compared with instant one nano later:" + now.toString() + "|" + oneNanoLater.toString());
+		Instant oneSecondLater = Instant.now().plusSeconds(1);
+		System.out.println("instant of now compared with instant one nano and second later:");
+		System.out.println("now        :" + now);
+		System.out.println("plus nano  :" + oneNanoLater);
+		System.out.println("plus second:" + oneSecondLater);
 	}
 }
