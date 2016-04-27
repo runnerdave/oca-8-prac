@@ -4,7 +4,7 @@ import java.awt.Point;
 
 public class ByValuePrac {
 	
-	static BiConsumer<Integer,Integer> printer = (var1, var2) -> System.out.println("var1:" + var1 + ",var2:" + var2);
+	public static BiConsumer<Integer,Integer> printer = (var1, var2) -> System.out.println("var1:" + var1 + ",var2:" + var2);
 
 	public static void main(String... ss) {
 		System.out.println("Prac of by value in java");		
