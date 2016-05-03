@@ -6,4 +6,6 @@ public interface Swim {
 		System.out.println("I can swim");
 	}
 
+	int teeth=28;
+
 }
