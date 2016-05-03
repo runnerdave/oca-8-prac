@@ -53,10 +53,21 @@ public class CastingPrac {
 		Remember that it does not occur for long, float, or double. So, this will not compile: int i = 129L;
 		*/
 
-		System.out.println("=======casting prac 4 automatic casting using int and long:");
-		//final int ii = 129L;//without final it does not compile and with value of 200 fails even with final
-		//long ll = ii;
-		//System.out.println("long ll:" + ll);
+		System.out.println("=======casting prac 4 automatic casting not possible using int and long (does not work):");
+		final long lj = 129L;//final does not help in this case 
+		i = (int)lj;//remove the casting and fails to compile
+		System.out.println("i from long lj:" + i);
+
+		System.out.println("=======casting prac 5 automatic casting using int and short, and all other smaller types");
+		final int ii = 33;
+		short sh = ii;
+		System.out.println("short sh:" + sh);
+		byte by = ii;
+		System.out.println("byte by:" + by);
+		char ch = ii;
+		System.out.println("char ch:" + ch);
+		
+
 	}
 
 }
