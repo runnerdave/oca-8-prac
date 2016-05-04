@@ -1,16 +1,17 @@
 package packageb;
 import packagea.ClassA;
+import static java.lang.Integer.MAX_VALUE;
 public class ClassB {
      static int instance;
      public static void main(String[] gs){
 	     int tres = 3;
 	     double localVar = 0x100;
 
-	     String _3iñrtyu = "hhh";
+	     String _3iãrtyu = "hhh";
 	     double $0jjj = 2.3;
 	     String $ = "hola";
 	     System.out.println(tres); 
-	     System.out.println(_3iñrtyu); 
+	     System.out.println(_3iãrtyu); 
 	     System.out.println($0jjj); 
 	     System.out.println(instance); 
 	     System.out.println("localVar:"); 
@@ -44,5 +45,7 @@ public class ClassB {
 			case 13:
 			System.out.println("13");
 		}
+
+		System.out.println("El MAX_VALUE:" + MAX_VALUE); 
      }
 }
