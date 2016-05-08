@@ -16,6 +16,11 @@ public class ArrayPrac {
 		System.out.println("BinarySearch in array for value \"8\":" + Arrays.binarySearch(intArray, 8));
 		Arrays.sort(intArray);
 		System.out.println("Array sorted:" + Arrays.toString(intArray));
+		System.out.println("Array sorted no toString():" + (intArray));
+		List list = Arrays.asList(intArray);
+		System.out.println("Array as list:" + list);
+		System.out.println("Array as list toString():" + Arrays.asList(intArray).toString());
+		System.out.println("Array as list toString() proper:" + Arrays.toString(list.toArray()));
 		System.out.println("BinarySearch in array for value \"2\":" + Arrays.binarySearch(intArray, 2));
 		System.out.println("BinarySearch in array for value \"6\":" + Arrays.binarySearch(intArray, 6));
 		System.out.println("BinarySearch in array for value \"8\":" + Arrays.binarySearch(intArray, 8));

@@ -16,6 +16,11 @@ public class BooleanPrac{
 		 System.out.println("Boolean prac, Boolean.TRUE:" + Boolean.TRUE);
 		 if(!Boolean.FALSE)
 		 	System.out.println("Boolean.FALSE:" + Boolean.FALSE);
-
+		Boolean hh = new Boolean("trua");
+		System.out.println("\"trua\" should be false:" + hh);
+		hh = new Boolean("truE");
+		System.out.println("\"truE\" should be true:" + hh);
+		hh = new Boolean("truE  ");
+		System.out.println("\"truE  \" should be false:" + hh);
 	}
 }
