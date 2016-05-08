@@ -8,5 +8,13 @@ public class MultiDimensionalArrayPrac {
       int i4[][][] = new int[1][3][5];
       System.out.println("length should be 1(the first):" + i4.length );
       System.out.println(" and the second dimension should be 3:" + i4[0].length);
+      System.out.println("the very first element should be 0:" + i4[0][0][0]);
+      System.out.println("the last element should be 0:" + i4[0][2][4]);
+      try {
+            System.out.println("it should blow up:" + i4[1][2][4]);
+      }
+      catch(Exception e) {
+            System.out.println("out of bounds: i4[1][2][4]");
+      }
    }
 }
