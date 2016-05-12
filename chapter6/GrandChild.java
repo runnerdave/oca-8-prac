@@ -24,16 +24,16 @@ public class GrandChild extends Parent {
 		System.out.println("GrandChild (reference upcasted to Grandparent) " + 
 								"age via instance variable is:" + gp.age);
 
-		System.out.println("p is instanceof Parent?:" + (p instanceof Parent));
-		System.out.println("gc is instanceof Parent?:" + (gc instanceof Parent));
+		System.out.println("p is instanceof Father?:" + (p instanceof Parent));
+		System.out.println("gc is instanceof Father?:" + (gc instanceof Parent));
 		System.out.println("p is instanceof GrandChild?:" + (p instanceof GrandChild));
 		
 
 		p = new Parent();
 
-		System.out.println("p is instanceof Parent?:" + (p instanceof Parent));
+		System.out.println("p is instanceof Father?:" + (p instanceof Parent));
 		System.out.println("p is instanceof GrandChild?:" + (p instanceof GrandChild));
 
-		//GrandChild gc2 = (Parent)p;		DOES NOT COMPILE
+		//GrandChild gc2 = (Father)p;		DOES NOT COMPILE
 	}
 }

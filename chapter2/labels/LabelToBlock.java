@@ -5,7 +5,7 @@ public class LabelToBlock {
 		int c = 0;
 		JACK: while (c < 8){
 			JILL: System.out.println(c);
-			if (c > 3) break JILL; else c++;
+	//		if (c > 3) break JILL; else c++; UNCOMMENT THIS LINE TO SHOW A COMPILATION ERROR
 			//uncomment the following line for the file to compile
 			//if (c > 3) break; else c++;
 		}

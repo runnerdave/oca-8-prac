@@ -1,4 +1,4 @@
-public class Son extends Parent {
+public class Son extends Father {
 	private int j;
 
 	public Son() {
