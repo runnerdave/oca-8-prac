@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class MultiDimensionalArrayPrac {
    public static void main(String[] args){
       int i = 4;
@@ -16,5 +17,20 @@ public class MultiDimensionalArrayPrac {
       catch(Exception e) {
             System.out.println("out of bounds: i4[1][2][4]");
       }
+
+      double daaa[][][] = new double[3][][];
+      double d = 100.0;
+      double[][] daa = new double[1][1];
+
+      daaa[0] = daa;
+
+      daa = daaa[0];
+      System.out.println("daaa[0][0]:" + Arrays.toString(daaa[0][0]));
+
+
+
+      int[][][] a = {{{1,2,3},{1,2,3}}};
+
+      System.out.println("a[0][0]:" + Arrays.toString(a[0][0]));
    }
 }

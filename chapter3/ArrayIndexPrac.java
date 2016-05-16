@@ -17,5 +17,6 @@ public class ArrayIndexPrac{
 
 		System.out.println("value for index++ = " + index++);
 		System.out.println("value for index = " + index);
+
 	} 
 }

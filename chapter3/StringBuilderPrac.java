@@ -40,6 +40,12 @@ public class StringBuilderPrac {
 
 		sb.append(false);
 		System.out.println("append false contents of sb:" + sb);
+
+		System.out.println("==practicing method delete and clear==");
+		System.out.println("BEFORE contents of sb:" + sb);
+		sb.delete(0, sb.length());
+
+		System.out.println("AFTER contents of sb:" + sb);
 	}
 
 }
