@@ -15,6 +15,8 @@ public class StringPrac{
 		System.out.println(myString2.trim() + "|");
 		myString2 = myString2.trim();
 		System.out.println(myString2 + "|");
+		System.out.println("trim this  ".trim() + "|");
+
 
 		System.out.println("===Practice substring===");
 		System.out.println("myString:" + myString);
@@ -28,6 +30,10 @@ public class StringPrac{
 		catch(StringIndexOutOfBoundsException e) {
 			System.out.println("sub 3,2 throws exception:" + e.getMessage());
 		}
+
+		System.out.println("===Practice concat===");
+		System.out.println("myString:".concat("concat"));
+
 		//String[] grades; grades = {"1","2"};//does not compile
 		String[] grades = new String[] {"1","2"};
 		System.out.println(Arrays.asList(grades));
