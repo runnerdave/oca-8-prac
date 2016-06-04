@@ -1,4 +1,6 @@
 //FAILS TO COMPILE
+//Because reuturn type in CovariantChild is not compatible with Integer
+//it would work if parent myMethod returned Number and child myMethod returned Integer
 public class CovariantPrac {
 	public Integer myMethod() {
 		return 1;

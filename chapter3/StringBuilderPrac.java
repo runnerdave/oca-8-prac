@@ -41,11 +41,27 @@ public class StringBuilderPrac {
 		sb.append(false);
 		System.out.println("append false contents of sb:" + sb);
 
-		System.out.println("==practicing method delete and clear==");
+		System.out.println("==practicing method insert==");
+		System.out.println("BEFORE contents of sb:" + sb);
+		sb.insert(1, "INSERTED");
+
+		System.out.println("AFTER contents of sb:" + sb);
+
+		System.out.println("==practicing method append with offset==");
+		System.out.println("BEFORE contents of sb:" + sb);
+		sb.append("INSERTED", 1, 2);
+
+		System.out.println("AFTER contents of sb:" + sb);
+
+
+		System.out.println("==practicing method delete and clear (no method clear)==");
 		System.out.println("BEFORE contents of sb:" + sb);
 		sb.delete(0, sb.length());
 
 		System.out.println("AFTER contents of sb:" + sb);
+
+		System.out.println("==practicing method creation of anonymous SB using + ==");
+		System.out.println(new StringBuilder("SB") + "-with this attached");
 	}
 
 }

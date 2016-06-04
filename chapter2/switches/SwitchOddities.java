@@ -2,7 +2,7 @@ public class SwitchOddities {
 	
 	public static void main(String... args) {
 		int i = 1;
-		System.out.println("Switch with no breaks prints default and everything without break afterwards");
+		System.out.println("Switch with no breaks prints match, default and everything without break afterwards");
 		switch(i) {
 			case 11:
 				System.out.println("11");
