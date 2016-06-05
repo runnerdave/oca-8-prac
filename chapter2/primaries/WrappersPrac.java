@@ -14,5 +14,6 @@ public class WrappersPrac {
 		System.out.println("test if ij and iii are equals with equals:" +(iii.equals(ij)));
 		System.out.println("test if ss and iii are equals with equals:" +(iii.equals(ss)));
 		System.out.println("test if s and i are equals with ==:" +(i==s));
+		//System.out.println("test if ss and ii are equals with ==:" +(ii==ss)); DOES NOT COMPILE
 	}
 }
