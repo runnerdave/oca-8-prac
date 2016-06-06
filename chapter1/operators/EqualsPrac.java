@@ -6,6 +6,7 @@ public class EqualsPrac{
 		short s = 2;
 		double d = 2.0;
 		float f = 2.0f;
+		boolean bool = true;
 
 		if (i==s) {
 			System.out.println("short and int contain 2 and are equal.");
@@ -33,6 +34,7 @@ public class EqualsPrac{
 		} else {
 			System.out.println("float and int contain 2 and are not equal.");
 		}
+		//if (bool==i) {} //DOES NOT COMPILE
 
 	}
 }
