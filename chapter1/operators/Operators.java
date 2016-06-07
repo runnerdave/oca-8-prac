@@ -22,5 +22,13 @@ public class Operators{
 		System.out.println("div example 1/3:" + (1/3));
 		System.out.println("div example 4/3:" + (4/3));
 		System.out.println("div example 3/4:" + (3/4));
+		operators2();
+	}
+
+	public static void operators2() {
+		int x = 0;
+		while(++x < 5) { x+=1; }
+		String message = x > 5 ? "Greater than" : "Less Than"; 
+		System.out.println(message+","+x);
 	}
 }
