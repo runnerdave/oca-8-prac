@@ -14,5 +14,21 @@ public class DoublePrac {
 		011 in octal is 9 in decimal
 		012 in octal is 10 in decimal
 		*/
+
+		System.out.println(methodX((byte)2));
+		System.out.println(methodY((byte)2));
+	}
+
+
+	//What should be the return type of the following method?
+	//A: double, note that long only applies to "by" 
+	public static double methodX( byte by){
+	    double d = 10.0;
+	    return (long) by/d*3;
+	}
+
+	public static long methodY( byte by){
+	    double d = 10.0;
+	    return (long)(by/d*3);
 	}
 }
