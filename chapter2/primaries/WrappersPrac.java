@@ -18,5 +18,9 @@ public class WrappersPrac {
 		//System.out.println("test if ss and ii are equals with ==:" +(ii==ss)); DOES NOT COMPILE
 		System.out.println("test if n and ii are equals with ==:" +(ii==n));
 		System.out.println("test if ij and n are equals with equals:" +(n.equals(ij)));
+
+		System.out.println("Show usage of ++ on wrapper ii++ (should be 1):" + ii++);
+
+		System.out.println("Show usage of ++ on wrapper ++ii (should be 3):" + ++ii);
 	}
 }

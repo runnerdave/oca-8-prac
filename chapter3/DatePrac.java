@@ -15,6 +15,7 @@ public class DatePrac {
 		System.out.println("Date of 13/02/2013: " + LocalDate.of(2013,02,13));
 		System.out.println("LocalDateTime of 13/02/2013 11:51am: " + LocalDateTime.of(2013,02,13,11,51));
 
+		System.out.println("\n========Playing with immutability:");
 		LocalTime myOtherTime = LocalTime.of(7,30);
 		System.out.println("Other time(7:30): " + myOtherTime);
 		System.out.println("Other time(7:30) plus a duration of 30 minutes: " + myOtherTime.plus(Duration.ofMinutes(30)));
@@ -33,7 +34,15 @@ public class DatePrac {
 		//LocalDate myDate2 = LocalDate.of(1976, 2, 35);
 		//System.out.println("print out a date of 35/2/1976:" + myDate2);//throws exception
 
-		System.out.println("========Playing with instant:");
+		System.out.println("\n========Playing with parsing:");
+		LocalDate dt = LocalDate.parse("2015-01-01").minusMonths(1).minusDays(1).plusYears(1); 
+		System.out.println("(\"2015-01-01\").minusMonths(1).minusDays(1).plusYears(1):" + dt);
+		dt = LocalDate.parse("2015-01-01").minusMonths(1);
+		System.out.println("(\"2015-01-01\").minusMonths(1):" + dt);
+		dt = LocalDate.parse("2015-01-01").minusMonths(1).minusDays(1);
+		System.out.println("(\"2015-01-01\").minusMonths(1).minusDays(1):" + dt);
+
+		System.out.println("\n========Playing with instant:");
 		Instant now = Instant.now();
 		Instant oneNanoLater = Instant.now().plusNanos(1);
 		Instant oneSecondLater = Instant.now().plusSeconds(1);
@@ -43,7 +52,7 @@ public class DatePrac {
 		System.out.println("plus second  :" + oneSecondLater);
 		System.out.println("now (LocalDateTime):" + LocalDateTime.now());
 
-		System.out.println("========Playing with TemporalAdjusters:");
+		System.out.println("\n========Playing with TemporalAdjusters:");
 		//You want to print the date that represents upcoming tuesday from now even if the current day is a tuesday.
 		// Which of the following lines of code accomplishe(s) this?
 
