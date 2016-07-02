@@ -1,6 +1,6 @@
 public class StringBuilderPrac {
 	
-	public static void main(String... a) {
+	static public void main(String... a) {
 
 		StringBuilder sb = new StringBuilder(10);
 		System.out.println(sb);//prints empty line
