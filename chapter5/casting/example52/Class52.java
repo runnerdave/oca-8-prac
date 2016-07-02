@@ -23,12 +23,20 @@ public class Class52 {
 	
 	public static void main(String... args) {
 		Class52 class52 = new Class52();
-		class52.otherExamples();
+		
+		System.out.println("testing equality and inheritance: " + (class52.d == class52.e));
+		System.out.println("testing equality and inheritance: " + (class52.d == class52.d));
+		System.out.println("testing equality and inheritance: " + (class52.f == class52.e));
+		//class52.e = class52.f; //DOES NOT COMPILE
+		System.out.println("testing equality and inheritance: " + (class52.f == class52.e));
 		System.out.println("test!!!");
+		
+		class52.otherExamples();
 	}
 
 	A d = new C();
 	A e = new A(); //so it does not interfere with "a"
+	I f = new A();
 
 	public void otherExamples() {
 		//I i = (I)b; //WORKS
@@ -40,7 +48,12 @@ public class Class52 {
 
 		//e = (I)e; //DOES NOT COMPILE
 
-		b = (B)e; //FAILS AT RUNTIME
+		//b = (B)e; //FAILS AT RUNTIME
+
+		//example of narrowing
+		//b = (B)d;
+
+		d = (A)b; //WORKS
 
 		//e = (B)b; //WORKS FINE
 

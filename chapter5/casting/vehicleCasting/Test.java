@@ -20,7 +20,7 @@ public class Test {
     public static void main(String[] args) {
         Vehicle v = new Car();
         //Vehicle v = new Bike(); //WORKS
-        Bike b = (Bike) v;
+        Bike b = (Bike) v; //THROWS ClassCastException
 
         v.printSound();
         b.printSound();

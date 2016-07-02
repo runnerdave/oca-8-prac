@@ -56,9 +56,23 @@ public class StringBuilderPrac {
 
 		System.out.println("==practicing method delete and clear (no method clear)==");
 		System.out.println("BEFORE contents of sb:" + sb);
-		sb.delete(0, sb.length());
+		
+		sb.deleteCharAt(3);
 
-		System.out.println("AFTER contents of sb:" + sb);
+		System.out.println("AFTER deletion of index 3 contents of sb:" + sb);
+
+
+		sb.delete(0, sb.length());
+		System.out.println("AFTER full delete contents of sb:" + sb);
+
+		sb.append("12345678");
+		System.out.println("AFTER populating it with 12345678 contents of sb:" + sb + "|length:" + sb.length());	
+		
+		sb.setLength(5);
+		System.out.println("AFTER setting the length to only 5:" + sb + "|length:" + sb.length());	
+
+		sb.setLength(10);
+		System.out.println("AFTER setting the length to 10:" + sb + "|length:" + sb.length());
 
 		System.out.println("==practicing method creation of anonymous SB using + ==");
 		System.out.println(new StringBuilder("SB") + "-with this attached");
