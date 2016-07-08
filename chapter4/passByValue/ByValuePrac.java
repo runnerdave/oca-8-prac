@@ -2,6 +2,9 @@ import java.util.function.*;
 
 import java.awt.Point;
 
+/**
+* taken from : http://www.javaworld.com/article/2077424/learn-java/does-java-pass-by-reference-or-pass-by-value.html
+*/
 public class ByValuePrac {
 	
 	public static BiConsumer<Integer,Integer> printer = (var1, var2) -> System.out.println("var1:" + var1 + ",var2:" + var2);
