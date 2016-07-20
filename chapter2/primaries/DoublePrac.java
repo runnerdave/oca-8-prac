@@ -23,7 +23,7 @@ public class DoublePrac {
 	//What should be the return type of the following method?
 	//A: double, note that long only applies to "by" 
 	public static double methodX( byte by){
-	    double d = 10.0;
+	    double d = 10;
 	    return (long) by/d*3;
 	}
 
