@@ -68,5 +68,14 @@ public class Class52 {
 
 		//C c = (A)b; //DOES NOT COMPILE
 
+		//example of narrowing
+		a = new A();
+		b = new B();
+		System.out.println("before narrowing a to B | a.getClass:" + (a.getClass()));
+		//b = (B)a; //THIS FAIL AT RUNTIME
+		a = b; 
+		b = (B)a; //BUT THIS DOES NOT FAIL ANYMORE
+		System.out.println("b = (B)a | a.getClass:" + (a.getClass()));
+		System.out.println("b = (B)a | b.getClass:" + (b.getClass()));
 	}
 }
