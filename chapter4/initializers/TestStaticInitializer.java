@@ -1,20 +1,27 @@
 
 
-class Super { static String ID = "QBANK"; }
+class Super { 
+	static String ID = "QBANK";
+}
 
-class Sub extends Super{
-	//static String tt;
-   static { System.out.println("In Sub"); }
+class Sub extends Super{    
+	static final String HASH;
+   	static { 
+   		System.out.println("In Sub");
+   		HASH = "kk";
+   	}
 }
 
 public class TestStaticInitializer {
    public static void main(String[] args){
       System.out.println(Sub.ID);
       //uncomment this line and only now the static initializer will be called
-      /* Sub s = new Sub();
-      String ss = s.ID;
-      s.tt = "now!";
-     System.out.println(ss + "|" + s.tt); */
+      // Sub s = new Sub();
+
+      //alternatively you can uncomment the next line of code,
+      // if you call the HASH variable, it has to be initialized
+      // and then the static constructor will be called.
+      //System.out.println(Sub.HASH); 
    }
 }
 

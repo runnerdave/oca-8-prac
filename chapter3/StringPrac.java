@@ -8,6 +8,7 @@ public class StringPrac{
 		System.out.println("largo de myString:" + myString.length());
 		char c = myString.charAt(3);
 		System.out.println("el caracter 3 en unoSeLaCala es:" + c);
+		System.out.println("el caracter 3 (en int) en unoSeLaCala es:" + (int)c);
 		
 		System.out.println("===Practice trim===");
 		System.out.println(myString2 + "|");
@@ -34,6 +35,11 @@ public class StringPrac{
 		System.out.println("===Practice concat===");
 		System.out.println("myString:".concat("concat"));
 
+		System.out.println("===Practice indexOf===");
+		System.out.println(myString);
+		System.out.println(myString.indexOf("Se"));
+
+		System.out.println("===Practice array of String===");
 		//String[] grades; grades = {"1","2"};//does not compile
 		String[] grades = new String[] {"1","2"};
 		System.out.println(Arrays.asList(grades));

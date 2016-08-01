@@ -11,6 +11,8 @@ public class ReturningValues {
           letters(letters);// abcd
 
           System.out.println(number + letters);// 1abcd
+
+          System.out.println(number + lettersBreakImmutability(letters));          
      }
      
      public static int number(int number) {
@@ -24,6 +26,13 @@ public class ReturningValues {
 
           letters += "d";
 
+          return letters;
+     }
+
+     public static String lettersBreakImmutability(String letters) {
+
+          letters = letters + "d";
+          System.out.println("letters inside of method:" + letters);
           return letters;
      }
 }

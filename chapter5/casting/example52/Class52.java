@@ -24,13 +24,12 @@ public class Class52 {
 	public static void main(String... args) {
 		Class52 class52 = new Class52();
 		
-		System.out.println("testing equality and inheritance: " + (class52.d == class52.e));
-		System.out.println("testing equality and inheritance: " + (class52.d == class52.d));
-		System.out.println("testing equality and inheritance: " + (class52.f == class52.e));
-		//class52.e = class52.f; //DOES NOT COMPILE
-		System.out.println("testing equality and inheritance: " + (class52.f == class52.e));
-		System.out.println("test!!!");
+		System.out.println("testing equality and inheritance (class52.d == class52.e):" + (class52.d == class52.e));
+		System.out.println("testing equality and inheritance (class52.d == class52.d):" + (class52.d == class52.d));
+		System.out.println("testing equality and inheritance (class52.f == class52.e):" + (class52.f == class52.e));
 		
+		System.out.println("each class is |class52.d:" + class52.d.getClass() + "|class52.e:" + class52.e.getClass() + "|class52.f:" + class52.f.getClass());
+				
 		class52.otherExamples();
 	}
 
