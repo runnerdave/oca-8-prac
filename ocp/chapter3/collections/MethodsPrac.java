@@ -18,7 +18,7 @@ public class MethodsPrac {
 		}
 		System.out.println("list after" + strList);
 
-		System.out.println("=====Set=======");
+		System.out.println("=====Hash Set=======");
 		Set<String> strSet = new HashSet<>();
 		System.out.println("adding one:" + strSet.add("one"));
 		System.out.println("adding one:" + strSet.add("one"));
@@ -29,6 +29,28 @@ public class MethodsPrac {
 		System.out.println("set after:" + strSet);
 		System.out.println("remove element one:" +strSet.remove("one")); 
 		System.out.println("set after:" + strSet);
+
+		System.out.println("=====Tree Set=======");
+		Set<String> strTreeSet = new TreeSet<>();
+		System.out.println("adding one:" + strTreeSet.add("one"));
+		System.out.println("adding one:" + strTreeSet.add("one"));
+		System.out.println("adding two:" + strTreeSet.add("two"));
+		System.out.println("set before:" + strTreeSet);
+		try { 
+			System.out.println("remove element 300:" +strTreeSet.remove(300)); // exception
+		} catch (ClassCastException e) {
+			System.out.println("exception caught!");
+			System.out.println(e.getMessage());
+		}
+		System.out.println("set after:" + strTreeSet);
+		System.out.println("remove element one:" +strTreeSet.remove("one")); 
+		System.out.println("set after:" + strTreeSet);
+
+		System.out.println("adding one:" + strTreeSet.add("one"));
+		System.out.println("adding three:" + strTreeSet.add("three"));
+		System.out.println("adding four:" + strTreeSet.add("four"));
+		for(String s : strTreeSet) System.out.print(s + ",");
+		System.out.println();
 	}
 
 }
