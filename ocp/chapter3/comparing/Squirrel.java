@@ -1,6 +1,9 @@
 import java.util.*;
 
 public class Squirrel {
+	MultiFieldComparator multi = new MultiFieldComparator();
+	ChainingComparator chain = new ChainingComparator();
+
 	private int weight;
 	private String species;
 	public Squirrel(String theSpecies) {
@@ -13,7 +16,20 @@ public class Squirrel {
 
 	public static void main(String... a) {
 		Squirrel s1 = new Squirrel("gray");
-		System.out.println(s1);
+		s1.setWeight(234);
+		Squirrel s2 = new Squirrel("brown");
+		s2.setWeight(134);
+		Squirrel s3 = new Squirrel("brown");
+		s2.setWeight(100);
+
+		Set<Squirrel> squirrelSet = new TreeSet<>();
+		try {
+			squirrelSet.add(s1);//Treeset expects a Comparable object
+		} catch(ClassCastException e) {
+			System.out.println(e.getMessage());
+		}
+
+		System.out.println("comparing s1 to s2 multi:" + s1.multi.compare(s1,s2));
 	}
 }
 
