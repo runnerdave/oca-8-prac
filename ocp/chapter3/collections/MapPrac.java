@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.function.*;
 public class MapPrac {
 	public static void main(String... a) {
 		System.out.println("===========hashmap==============");
@@ -30,6 +31,22 @@ public class MapPrac {
 		System.out.println(treeMap.containsValue("lion")); // false 
 		System.out.println(treeMap.size()); // 3
 
+		treeMap.forEach((K,V) -> System.out.println(K + ":" + V));
+
+		System.out.println("===========putIfAbsent==============");
+		System.out.println("putIfAbsent kookaburra:" + treeMap.putIfAbsent("kookaburra","worm"));
+		System.out.println("putIfAbsent lion:" + treeMap.putIfAbsent("lion","ham"));
+
+		treeMap.forEach((K,V) -> System.out.println(K + ":" + V));
+
+		System.out.println("===========merge==============");
+		BiFunction<String, String, String> mapper = (v1, v2) 
+											-> v1.startsWith("g") ? v1.concat("-" + v2) : v1;
+		//BiFunction<String, String, String> mapper = (v1, v2)
+		//											-> v1.length() > v2.length() ? v1: v2;
+		treeMap.merge("koala","eucaliptus",mapper);
+
+		treeMap.forEach((K,V) -> System.out.println(K + ":" + V));
 
 		System.out.println("");
 	}
