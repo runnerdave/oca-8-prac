@@ -50,8 +50,19 @@ public class BoundPrac {
 		list5.add(new B());
 		//list5.add(new A()); //DOES NOT COMPILE
 		//List<?> list6 = new ArrayList<? extends A>(); // DOES NOT COMPILE
+
+		List<? extends doAble> list6 = new ArrayList<doAble>();
+		List<? extends doAble> list7 = new ArrayList<C>();
+		//List<? extends doAble> list8 = new ArrayList<B>(); //DOES NOT COMPILE
+		//list7.add(new C()); //DOES NOT COMPILE
+
+		List<? super doAble> list8 = new ArrayList<doAble>();
+		//List<? super doAble> list9 = new ArrayList<C>(); //DOES NOT COMPILE
+		List<? super C> list10 = new ArrayList<doAble>();
+		list10.add(new C());
 	}
 }
 class A {}
 class B extends A { }
-class C extends B { }
+class C extends B implements doAble { }
+interface doAble {}
