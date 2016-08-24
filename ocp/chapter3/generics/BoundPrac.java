@@ -43,6 +43,8 @@ public class BoundPrac {
 		//list3.add(new Object()); //DOES NOT COMPILE because list can be of A
 
 		list3 = new ArrayList<Object>();
+		//list3.add(new Object());  //DOES NOT COMPILE either
+		list3.add(new C());
 
 		//List<? extends B> list4 = new ArrayList<A>(); // DOES NOT COMPILE
 		List<? super B> list5 = new ArrayList<A>();
