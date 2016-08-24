@@ -47,6 +47,18 @@ public class QueuePrac {
 
 		System.out.println(stack); //notice they are added to the back of the queue
 
+		System.out.println("pop:" + stack.pop());
+
+		System.out.println(stack);
+
+		System.out.println("push 10");
+		stack.push(10);
+		System.out.println(stack);
+
+		System.out.println("poll:" + stack.poll());
+
+		System.out.println(stack);
+
 	}
 
 }
