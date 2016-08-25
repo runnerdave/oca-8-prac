@@ -9,6 +9,9 @@ public class GenericMethodPrac {
 		System.out.println(GenericMethodPrac.<String>identity("ss2"));
 		System.out.println(GenericMethodPrac.identity(3));
 		System.out.println(GenericMethodPrac.<Integer>identity(3));
+
+		GenericMethodPrac gmp = new GenericMethodPrac();
+		System.out.println(gmp.identityInstance("using instance method"));
 	}
 
 	public static <T> void sink(T t) {
@@ -16,4 +19,6 @@ public class GenericMethodPrac {
 	}
 
 	public static <T> T identity(T t) { return t; }
+
+	public <T> T identityInstance(T t) { return t; }
 }
