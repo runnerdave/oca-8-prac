@@ -5,10 +5,17 @@ public class MapMergePrac {
 		map.put(1, 10);
 		map.put(2, 20);
 		map.put(3, null);
+		System.out.println(map);
 		map.merge(1, 3, (a,b) -> a + b);
 		map.merge(3, 3, (a,b) -> a + b);
 
-		System.out.println(map);
+		System.out.println(map); //choose option from list below
+
+		//use a lambda to substract now
+		map.merge(2, 3, (a,b) -> a - b);
+		System.out.println(map);//should be 2=17
+		map.merge(2, -3, (a,b) -> b - a);
+		System.out.println(map);//should be 2=-20 
 	}
 }
 
