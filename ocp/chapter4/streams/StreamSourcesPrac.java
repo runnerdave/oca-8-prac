@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.stream.*;
+import java.util.function.*;
 public class StreamSourcesPrac {
 	public static void main(String... a) {
 		Stream<String> empty = Stream.empty(); // count = 0
@@ -36,9 +37,34 @@ public class StreamSourcesPrac {
 		System.out.println(minEmpty.isPresent()); // false
 
 		System.out.println("=========findAny and findFirst:");
-		Stream<String> s = Stream.of("monkey", "gorilla", "bonobo");
+		Stream<String> streamOfApes = Stream.of("monkey", "gorilla", "bonobo");
 		Stream<String> infinite = Stream.generate(() -> "chimp");
-		s.findAny().ifPresent(System.out::println); // monkey
+		streamOfApes.findAny().ifPresent(System.out::println); // monkey
 		infinite.findAny().ifPresent(System.out::println); // chimp
+
+		System.out.println("=========allMatch(), anyMatch() and noneMatch():");
+		List<String> stringList = Arrays.asList("monkey", "2", "chimp"); 
+		Stream<String> infiniteChimps = Stream.generate(() -> "chimp"); 
+		Predicate<String> pred = x -> Character.isLetter(x.charAt(0)); 
+		System.out.println(stringList.stream().anyMatch(pred)); // true 
+		System.out.println(stringList.stream().allMatch(pred)); // false 
+		System.out.println(stringList.stream().noneMatch(pred)); // false 
+		System.out.println(infiniteChimps.anyMatch(pred)); // true
+
+		System.out.println("=========reduce:");
+		Stream<Integer> ints = Stream.of(2,4,6);
+		Optional<Integer> reduceValue = ints.reduce((c,d)->c*d);
+		int reduceValueWithIdentity = Stream.of(2,4,6).reduce(1, (c,d)->c*d); //CANNOT REUSE ints
+		System.out.println(reduceValue);
+		System.out.println(reduceValueWithIdentity);
+
+		System.out.println("=========collect:");
+		Stream<String> wolfstream = Stream.of("w", "o", "l", "f"); 
+		StringBuilder word = wolfstream.collect(StringBuilder::new,	StringBuilder::append, StringBuilder::append);
+		System.out.println("word is:" + word);
+
+		wolfstream = Stream.of("w", "o", "l", "f");
+		TreeSet<String> set = wolfstream.collect(TreeSet::new, TreeSet::add, TreeSet::addAll);
+		System.out.println(set); // [f, l, o, w]
 	}
 }
