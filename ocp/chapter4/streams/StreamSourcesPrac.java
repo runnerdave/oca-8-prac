@@ -25,5 +25,20 @@ public class StreamSourcesPrac {
 		System.out.println("=========iterate 5 odd numbers:");
 		Stream<Integer> oddNumbers = Stream.iterate(1, n -> n + 2);
 		oddNumbers.limit(5).forEach(System.out::println);
+
+		System.out.println("=========return Optional<String> from min method call on stream:");
+		Stream<String> s = Stream.of("monkey", "ape", "bonobo");
+		Optional<String> min = s.min((s1, s2) -> s1.length()-s2.length());
+		min.ifPresent(System.out::println); // ape
+
+		System.out.println("=========return optional from min method call on empty stream:");
+		Optional<?> minEmpty = Stream.empty().min((s1, s2) -> 0);
+		System.out.println(minEmpty.isPresent()); // false
+
+		System.out.println("=========findAny and findFirst:");
+		Stream<String> s = Stream.of("monkey", "gorilla", "bonobo");
+		Stream<String> infinite = Stream.generate(() -> "chimp");
+		s.findAny().ifPresent(System.out::println); // monkey
+		infinite.findAny().ifPresent(System.out::println); // chimp
 	}
 }
