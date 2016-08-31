@@ -30,5 +30,22 @@ public class StreamIntermediateOpsPrac {
 		sortable = Stream.of("brown bear-", "grizzly-"); 
 		sortable.sorted(Comparator.reverseOrder()).forEach(System.out::println); 
 		//sortable.sorted(Comparator::reverseOrder); // DOES NOT COMPILE
+
+		System.out.println("========peek========");
+		Stream<String> stream = Stream.of("black bear", "brown bear", "grizzly", "grande");
+		long count = stream.filter(x -> x.startsWith("g"))
+		.peek(System.out::println).count(); // grizzly
+		System.out.println(count); // 1
+
+		Stream<Integer> infinite = Stream.iterate(1, x -> x + 1);
+		infinite.limit(5)
+			.peek(System.out::print)
+			.filter(x -> x % 2 == 1)
+			.forEach(System.out::print);//notice it prints 11233455 because it runs a full process per item
+
+		infinite = Stream.iterate(1, x -> x + 1);
+		infinite.filter(x -> x % 2 == 1)
+			.limit(5)
+			.forEach(System.out::print); // 13579
 	}
 }
