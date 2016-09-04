@@ -15,5 +15,14 @@ public class StreamPrimitivesPrac {
 
 		int random = (int)(Math.random() * 50); 
     	System.out.println(random);
+
+    	System.out.println("========SummaryStatistics");
+    	System.out.println(range(IntStream.of(6,5,6,7)));//2
+	}
+
+	private static int range(IntStream ints) { 
+		IntSummaryStatistics stats = ints.summaryStatistics(); 
+		if (stats.getCount() == 0) throw new RuntimeException(); 
+		return stats.getMax()-stats.getMin();
 	}
 }
