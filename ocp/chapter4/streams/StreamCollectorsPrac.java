@@ -42,11 +42,37 @@ public class StreamCollectorsPrac {
 		Map<String,String> carsMapped = cars.collect(Collectors.toMap(s->s.substring(0,3), s->s));
 		System.out.println(carsMapped);
 
-		/*System.out.println("=============grouping ==============");
-		Stream<String> cars = Stream.of("mazda", "maserati", "lancia", "volkswagen", "lotus");
-		Map<String,List<String>> carsMapped = cars.collect(Collectors.groupingBy(s->s.substring(0,1), HashMap::new,
-															mapping(s->s,Collectors.toList())));
-		System.out.println(carsMapped);*/
+		cars = Stream.of("mazda", "maserati", "lancia", "volkswagen", "lotus");
+		carsMapped = cars.collect(Collectors.toMap(s->s.substring(0,2), s->s, (s, a) -> s + ", " + a));
+		System.out.println(carsMapped);//THIS WAY solves the problem of same key for "ma"
+		System.out.println("get(\"ma\"):" + carsMapped.get("ma"));
+
+		System.out.println("=============grouping ==============");
+		cars = Stream.of("mazda", "maserati", "lancia", "volkswagen", "lotus");
+		Map<String,List<String>> carsGrouped = cars.collect(Collectors.groupingBy(s->s.substring(0,1)));
+		System.out.println(carsGrouped);
+		System.out.println("class of the map:" + carsGrouped.getClass());
+		System.out.println("class of the values:" + carsGrouped.get("v").getClass());
+
+		cars = Stream.of("mazda", "maserati", "lancia", "volkswagen", "lotus");
+		Map<String,Set<String>> carsGroupedToSet = cars.collect(Collectors.groupingBy(s->s.substring(0,1), Collectors.toSet()));
+		System.out.println(carsGroupedToSet);		
+		System.out.println("class of the map:" + carsGroupedToSet.getClass());
+		System.out.println("class of the values:" + carsGroupedToSet.get("v").getClass());
+
+		cars = Stream.of("mazda", "maserati", "lancia", "volkswagen", "lotus");
+		Map<String,Set<String>> carsGroupedToHashSet = cars.collect(Collectors.groupingBy(s->s.substring(0,1), TreeMap::new, Collectors.toSet()));
+		System.out.println(carsGroupedToHashSet);		
+		System.out.println("class of the map:" + carsGroupedToHashSet.getClass());
+		System.out.println("class of the values:" + carsGroupedToHashSet.get("v").getClass());
+
+		System.out.println("=============partitioning ==============");
+		cars = Stream.of("mazda", "maserati", "lancia", "volkswagen", "lotus");
+		Map<Boolean, List<String>> partitioned = cars.collect(Collectors.partitioningBy(s -> s.indexOf("m") == 0));
+		System.out.println("partitioned by starting with \"m\"");
+		System.out.println(partitioned);
+
+		
 	}
 
 }
