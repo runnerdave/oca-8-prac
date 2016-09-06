@@ -71,7 +71,13 @@ public class StreamCollectorsPrac {
 		Map<Boolean, List<String>> partitioned = cars.collect(Collectors.partitioningBy(s -> s.indexOf("m") == 0));
 		System.out.println("partitioned by starting with \"m\"");
 		System.out.println(partitioned);
+		System.out.println("class of the values:" + partitioned.get(true).getClass());
 
+		cars = Stream.of("mazda", "maserati", "lancia", "volkswagen", "lotus");		
+		Map<Boolean, Set<String>> partitionedSpecific = cars.collect(Collectors.partitioningBy(s -> s.indexOf("m") == 0, Collectors.toSet()));
+		System.out.println("partitioned by starting with \"m\"");
+		System.out.println(partitionedSpecific);
+		System.out.println("class of the values:" + partitionedSpecific.get(true).getClass());
 		
 	}
 

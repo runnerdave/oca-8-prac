@@ -20,9 +20,23 @@ public class StreamPrimitivesPrac {
 		int random = (int)(Math.random() * 50); 
     	System.out.println(random);
 
+    	System.out.println("========LongStream");
+    	LongStream ls = LongStream.of(1, 2, 3);
+    	OptionalLong opt = ls.map(n -> n * 10)
+    							.peek(s->System.out.println("peeking:" + s))
+    							.filter(n -> n < 5)
+    							.findFirst();
+    	//if (opt.isPresent()) System.out.println(opt.get()); //WRONG SYNTAX
+    	//Both lines below return nothing this is question 9 in chapter 4 of the ocp book
+		if (opt.isPresent()) System.out.println(opt.getAsLong());
+		opt.ifPresent(System.out::println);
+
 
     	System.out.println("========SummaryStatistics");
     	System.out.println(range(IntStream.of(6,5,6,7)));//2
+
+
+
 	}
 
 	private static int range(IntStream ints) { 
