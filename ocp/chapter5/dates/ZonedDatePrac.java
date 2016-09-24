@@ -1,4 +1,5 @@
 import java.time.*;
+import java.util.*;
 public class ZonedDatePrac {
 	public static void main(String... args) {
 
@@ -17,6 +18,23 @@ public class ZonedDatePrac {
 		ZoneId.getAvailableZoneIds().stream()
 			.filter(z -> z.contains("Melbourne"))
 			.sorted().forEach(System.out::println);
+
+		System.out.println("=====zone id for GMT +2:====");	
+		System.out.println(ZoneId.of("GMT+2"));
+		System.out.println("getDisplayName:" + ZoneId.of("GMT+2").getDisplayName(java.time.format.TextStyle.FULL, Locale.getDefault()));
+
+		System.out.println("=====zone id for ZoneOffset +2:====");	
+		System.out.println(ZoneId.of("+02:00"));
+
+		System.out.println("=====zone id for UTC+01:00:====");	
+		System.out.println(ZoneId.of("UTC+01:00"));
+
+		System.out.println("=====zone id for UT+01:00:====");	
+		System.out.println(ZoneId.of("UT+01:00"));
+
+		System.out.println("=====zone id for default:====");	
+		//System.out.println(TimeZone.getDefault()); //PRINTS A WHOLE LOT OF THINGS
+		System.out.println(ZoneId.systemDefault()); 
 
 		System.out.println("=====get daylight savings for Melbourne:====");
 		ZonedDateTime zonedDateTimeNow = ZonedDateTime.now();
