@@ -1,12 +1,35 @@
 import java.time.*;
 import java.time.temporal.*;
+import java.time.format.*;
 public class ReviewQuestionsPrac {
 	public static void main(String... a) {
+
+		/*
+		10. What is the output of the following code?
+
+		A. 3/7/14 11:22 AM
+		B. 5/10/15 11:22 AM
+		C. 3/7/14
+		D. 5/10/15
+		E. 11:22 AM
+		F. The code does not compile.
+		G. A runtime exception is thrown.
+		*/
+		System.out.println("===Question 10===");
+		LocalDateTime d = LocalDateTime.of(2015, 5, 10, 11, 22, 33); 
+		Period p = Period.of(1, 2, 3);//2014-3-7
+		d = d.minus(p);
+		DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT); 
+		System.out.println(d.format(f));//
+
+		System.out.println("for full date:" + d.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)));
+
+
 		/*
 		12. Which of the answer choices is true given the following code? (Choose all that apply.)
 
-		2016–08–28T05:00 GMT-04:00 2016–08–28T09:00 GMT-06:00
-		280 Chapter 5 Dates, Strings, and Localization
+		2016–08–28T05:00 GMT-04:00  -- 09:00 GMT
+		2016–08–28T09:00 GMT-06:00  -- 15:00 GMT
 
 		A. The first date/time is earlier.
 		B. The second date/time is earlier.
@@ -24,16 +47,37 @@ public class ReviewQuestionsPrac {
 		*/
 
 		System.out.println("===Question 12===");
-		System.out.println("TODO: print time difference and boolean testing that dateTime1 is earlier than dateTime2");
+		LocalDate date12 = LocalDate.parse("2016-08-28");
+		
+		LocalTime time12_a = LocalTime.of(5, 0, 0);
+		LocalTime time12_b = LocalTime.of(9, 0, 0);
+		
+		ZoneId zoneId12_a = ZoneId.of("GMT-4");
+		ZoneId zoneId12_b = ZoneId.of("GMT-6");
+
+		ZonedDateTime zoneDT12_a = ZonedDateTime.of(date12, time12_a, zoneId12_a);
+		ZonedDateTime zoneDT12_b = ZonedDateTime.of(date12, time12_b, zoneId12_b);
+
+		System.out.println("ZDT 1:" + zoneDT12_a);		
+		System.out.println("ZDT 2:" + zoneDT12_b);	
+
+		System.out.println("Difference 1 and 2:" + Duration.between(zoneDT12_a, zoneDT12_b));
+
+		System.out.println("Difference 2 and 1:" + Duration.between(zoneDT12_b, zoneDT12_a));			
+
+		System.out.println("Is date 1 earlier than date 2:" + (zoneDT12_a.compareTo(zoneDT12_b) < 0));
 
 		/*
 		13. Note that March 13, 2016, is the weekend that clocks spring ahead for daylight savings time. 
 		What is the output of the following?
 
-		LocalDate date = LocalDate.of(2016, Month.MARCH, 13); LocalTime time = LocalTime.of(1, 30);
+		LocalDate date = LocalDate.of(2016, Month.MARCH, 13); 
+		LocalTime time = LocalTime.of(1, 30);
 		ZoneId zone = ZoneId.of("US/Eastern");
-		ZonedDateTime dateTime1 = ZonedDateTime.of(date, time, zone); ZonedDateTime dateTime2 = dateTime1.plus(1, ChronoUnit.HOURS);
-		long hours = ChronoUnit.HOURS.between(dateTime1, dateTime2); int clock1 = dateTime1.getHour();
+		ZonedDateTime dateTime1 = ZonedDateTime.of(date, time, zone); 
+		ZonedDateTime dateTime2 = dateTime1.plus(1, ChronoUnit.HOURS);
+		long hours = ChronoUnit.HOURS.between(dateTime1, dateTime2); 
+		int clock1 = dateTime1.getHour();
 		int clock2 = dateTime2.getHour();
 		System.out.println(hours + "," + clock1 + "," + clock2);
 
@@ -56,12 +100,17 @@ public class ReviewQuestionsPrac {
 
 		System.out.println("===Question 13===");
 
-		LocalDate date = LocalDate.of(2016, Month.MARCH, 13); LocalTime time = LocalTime.of(1, 30);
+		LocalDate date = LocalDate.of(2016, Month.MARCH, 13); 
+		LocalTime time = LocalTime.of(1, 30);
 		ZoneId zone = ZoneId.of("US/Eastern");
-		ZonedDateTime dateTime1 = ZonedDateTime.of(date, time, zone); ZonedDateTime dateTime2 = dateTime1.plus(1, ChronoUnit.HOURS);
-		long hours = ChronoUnit.HOURS.between(dateTime1, dateTime2); int clock1 = dateTime1.getHour();
-		int clock2 = dateTime2.getHour();
+		ZonedDateTime dateTime1 = ZonedDateTime.of(date, time, zone); 
+		ZonedDateTime dateTime2 = dateTime1.plus(1, ChronoUnit.HOURS);
+		long hours = ChronoUnit.HOURS.between(dateTime1, dateTime2); //1 -- not 2 because offset changes as well
+		int clock1 = dateTime1.getHour(); //1
+		int clock2 = dateTime2.getHour(); //3
 		System.out.println(hours + "," + clock1 + "," + clock2);
+
+		System.out.println("Difference " + dateTime1 + " and " + dateTime2 + ":" + Duration.between(dateTime1, dateTime2));
 
 		/*
 		14. Note that March 13, 2016, is the weekend that we spring forward, 
