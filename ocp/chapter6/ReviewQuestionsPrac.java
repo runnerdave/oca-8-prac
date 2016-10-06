@@ -16,10 +16,164 @@ answer to 6:
 code question 7, 16
 
 */
+import java.io.*;
 public class ReviewQuestionsPrac {
 	
-	public static void main(String... a) {
-		System.out.println("here goes the question");
+	public static void main(String... args) {
+		System.out.println("==== Question 3 =====");
+
+		/*
+		uncomment the try and place the options below, which one should work?
+
+		A. FileNotFoundException | IOException e -- inheritance problem
+		B. FileNotFoundException e | IOException e -- bad syntax
+		C. FileNotFoundException | RuntimeException e -- FileNotFound is a subclass of IOException
+		D. FileNotFoundException e | RuntimeException e  -- bad syntax
+		E. IOException | RuntimeException e
+		F. IOException e | RuntimeException e -- bad syntax
+		
+
+		try {
+			throw new IOException();
+		} catch (IOException | RuntimeException e) { }
+
+		*/
+
+		System.out.println("==== Question 5 =====");
+
+		/*
+		what is printed below
+		A. TWF
+		B. TWDF
+		C. TWDEF
+		D. TWF followed by an exception
+		318 Chapter 6 Exceptions and Assertions
+		E. TWDF followed by an exception
+		F. TWEF followed by an exception
+		G. The code does not compile.
+
+		*/
+
+		try (AutocloseableFlow.Door d = new AutocloseableFlow.Door(); 
+			 AutocloseableFlow.Window w = new AutocloseableFlow.Window()) {
+				System.out.print("T"); 
+		} catch (Exception e) {
+				System.out.print("E"); 
+		} finally {
+				System.out.print("F"); 
+		}
+
+
+		System.out.println("==== Question 6 =====");
+
+		/*
+		What is the output of the following code?
+		A. TWF
+		B. TWDF
+		C. TWDEF
+		D. TWF followed by an exception
+		E. TWDF followed by an exception
+		F. TWEF followed by an exception
+		G. The code does not compile.
+
+		originally was:
+		try {AutocloseableFlow2.Door d = new AutocloseableFlow2.Door(); 
+			AutocloseableFlow2.Window w = new AutocloseableFlow2.Window() }
+		and that is not a valid syntax
+
+		*/
+
+
+		try (AutocloseableFlow2.Door d = new AutocloseableFlow2.Door(); 
+			AutocloseableFlow2.Window w = new AutocloseableFlow2.Window() )
+		{
+			System.out.print("T");
+		} catch (Exception e) { 
+			System.out.print("E");
+		} finally { 
+			System.out.print("F");
+		}
+
+		System.out.println("==== Question 7 =====");
+
+		/*
+		What is the result of running java ReviewQuestionsPrac hi there with the following code?
+		A. hithere
+		B. The assert statement throws an AssertionError.
+		C. The code throws an ArrayIndexOutOfBoundsException.
+		D. The code compiles and runs successfully, but there is no output.
+		E. The code does not compile.
+		*/
+
+		if(args.length <= 3) assert false;
+			System.out.println(args[0] + args[1] + args[2]);
+
+		System.out.println("==== Question 16 =====");
+
+		/*
+		What is the output of the following?
+		A. rain 0
+		B. rain 1
+		C. rain 2
+		D. show 0
+		E. snow 1
+		F. snow 2
+		G. The code does not compile.
+		*/
+
+		try (SnowStorm.Walk walk1 = new SnowStorm.Walk(); 
+			SnowStorm.Walk walk2 = new SnowStorm.Walk();) { 
+			throw new RuntimeException("rain");
+		} catch(Exception e) { 
+			System.out.println(e.getMessage()
+								+ " " + e.getSuppressed().length); 
+		}
+
 	}
 
+} 
+
+class AutocloseableFlow {
+	static class Door implements AutoCloseable {
+	 	public void close() {
+			System.out.print("D");
+		}
+	}
+	static class Window implements Closeable { 
+		public void close() {
+			System.out.print("W");
+			throw new RuntimeException(); 
+		}
+	}
+	/*public static void main(String[] args) {
+		try (Door d = new Door(); Window w = new Window()) {
+			System.out.print("T"); } catch (Exception e) {
+			System.out.print("E"); } finally {
+			System.out.print("F"); 
+		}
+	} */
+}
+
+
+class AutocloseableFlow2 {
+	static class Door implements AutoCloseable { 
+		public void close() {
+			System.out.print("D");
+			throw new RuntimeException(); 
+		}
+	}
+	static class Window implements Closeable { 
+		public void close() {
+			System.out.print("W");
+			throw new RuntimeException(); 
+		}
+	}
+}
+
+class SnowStorm {
+	static class Walk implements AutoCloseable { 
+		public void close() {
+			throw new RuntimeException("snow"); 
+		}
+	}
 }
