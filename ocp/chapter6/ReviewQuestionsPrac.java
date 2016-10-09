@@ -27,7 +27,7 @@ public class ReviewQuestionsPrac {
 
 		A. FileNotFoundException | IOException e -- inheritance problem
 		B. FileNotFoundException e | IOException e -- bad syntax
-		C. FileNotFoundException | RuntimeException e -- FileNotFound is a subclass of IOException
+		C. FileNotFoundException | RuntimeException e -- FileNotFound is a subclass of IOException therefore IOException is not handled
 		D. FileNotFoundException e | RuntimeException e  -- bad syntax
 		E. IOException | RuntimeException e
 		F. IOException e | RuntimeException e -- bad syntax
@@ -46,53 +46,26 @@ public class ReviewQuestionsPrac {
 		A. TWF
 		B. TWDF
 		C. TWDEF
-		D. TWF followed by an exception
-		318 Chapter 6 Exceptions and Assertions
+		D. TWF followed by an exception		
 		E. TWDF followed by an exception
 		F. TWEF followed by an exception
 		G. The code does not compile.
 
 		*/
-
+		int suppressedExceptionsLength = 0;
+		Exception caughtException = null;
 		try (AutocloseableFlow.Door d = new AutocloseableFlow.Door(); 
 			 AutocloseableFlow.Window w = new AutocloseableFlow.Window()) {
 				System.out.print("T"); 
 		} catch (Exception e) {
 				System.out.print("E"); 
+				suppressedExceptionsLength = e.getSuppressed().length;
+				caughtException = e;
 		} finally {
 				System.out.print("F"); 
 		}
-
-
-		System.out.println("==== Question 6 =====");
-
-		/*
-		What is the output of the following code?
-		A. TWF
-		B. TWDF
-		C. TWDEF
-		D. TWF followed by an exception
-		E. TWDF followed by an exception
-		F. TWEF followed by an exception
-		G. The code does not compile.
-
-		originally was:
-		try {AutocloseableFlow2.Door d = new AutocloseableFlow2.Door(); 
-			AutocloseableFlow2.Window w = new AutocloseableFlow2.Window() }
-		and that is not a valid syntax
-
-		*/
-
-
-		try (AutocloseableFlow2.Door d = new AutocloseableFlow2.Door(); 
-			AutocloseableFlow2.Window w = new AutocloseableFlow2.Window() )
-		{
-			System.out.print("T");
-		} catch (Exception e) { 
-			System.out.print("E");
-		} finally { 
-			System.out.print("F");
-		}
+		System.out.println("\nnumber of suppressed exceptions: " + suppressedExceptionsLength);
+		System.out.println("\ncaught exception: " + caughtException.getClass());
 
 		System.out.println("==== Question 7 =====");
 
@@ -105,8 +78,12 @@ public class ReviewQuestionsPrac {
 		E. The code does not compile.
 		*/
 
-		if(args.length <= 3) assert false;
-			System.out.println(args[0] + args[1] + args[2]);
+		try {
+			if(args.length <= 3) assert false;
+				System.out.println(args[0] + args[1] + args[2]);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 
 		System.out.println("==== Question 16 =====");
 
@@ -119,6 +96,9 @@ public class ReviewQuestionsPrac {
 		E. snow 1
 		F. snow 2
 		G. The code does not compile.
+
+		Answer C: The exception inside the try block becomes the primary exception since it is thrown first. 
+		Then two suppressed exceptions are added to it when trying to close the AutoCloseable resources.
 		*/
 
 		try (SnowStorm.Walk walk1 = new SnowStorm.Walk(); 
@@ -152,22 +132,6 @@ class AutocloseableFlow {
 			System.out.print("F"); 
 		}
 	} */
-}
-
-
-class AutocloseableFlow2 {
-	static class Door implements AutoCloseable { 
-		public void close() {
-			System.out.print("D");
-			throw new RuntimeException(); 
-		}
-	}
-	static class Window implements Closeable { 
-		public void close() {
-			System.out.print("W");
-			throw new RuntimeException(); 
-		}
-	}
 }
 
 class SnowStorm {
