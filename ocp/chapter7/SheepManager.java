@@ -15,6 +15,9 @@ public class SheepManager {
 			System.out.print((++sheepCountToSync)+" ");
 		}
 	}
+	private synchronized void incrementAndReportSynchronizedMethod() { 
+		System.out.print((++sheepCount)+" ");
+	}
 	public static void main(String[] args) {
 		ExecutorService service = null;
 		try {
@@ -30,12 +33,19 @@ public class SheepManager {
 			for(int i=0; i<10; i++) {
 				service.submit(() -> managerAtomic.incrementAndReportAtomic());
 			}*/
-			/**/	service = Executors.newFixedThreadPool(10);
+			/*	service = Executors.newFixedThreadPool(10);
 			SheepManager managerSync = new SheepManager();
 			System.out.println("\nsynchronized block: ");
 			for(int i=0; i<10; i++) {
 				service.submit(() -> managerSync.incrementAndReportSynchronized());
-			}					
+			}	*/	
+
+			/**/	service = Executors.newFixedThreadPool(10);
+			SheepManager managerSync = new SheepManager();
+			System.out.println("\nsynchronized method: ");
+			for(int i=0; i<10; i++) {
+				service.submit(() -> managerSync.incrementAndReportSynchronizedMethod());
+			}				
 		} finally {
 			if(service != null) service.shutdown();
 		}
