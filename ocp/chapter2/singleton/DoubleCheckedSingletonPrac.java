@@ -7,7 +7,7 @@ public class DoubleCheckedSingletonPrac {
 }
 
 class VisitorTicketTracker {
-	//volitalie prevents a subtle case where the compiler tries to optimize the code such that 
+	//volatile prevents a subtle case where the compiler tries to optimize the code such that 
 	//that the object is accessed before it is finished being constructed.
 	private static volatile VisitorTicketTracker instance;
 	private VisitorTicketTracker() {

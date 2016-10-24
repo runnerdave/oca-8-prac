@@ -1,3 +1,7 @@
+/*
+This model was picked from: http://tutorials.jenkov.com/java-concurrency/java-memory-model.html
+*/
+
 public class MemoryModelPrac {
 
 	public static void main(String... a) {
