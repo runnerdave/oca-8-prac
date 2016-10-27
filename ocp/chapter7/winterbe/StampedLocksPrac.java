@@ -52,7 +52,13 @@ public class StampedLocksPrac {
 
 		/*
 		Sometimes it's useful to convert a read lock into a write lock without unlocking and locking again. 
-		StampedLock provides the method tryConvertToWriteLock() for that purpose as seen in the next sample:
+		StampedLock provides the method tryConvertToWriteLock() for that purpose as seen in the next sample.
+
+		The task first obtains a read lock and prints the current value of field count to the console. 
+		But if the current value is zero we want to assign a new value of 23. We first have to convert the read lock 
+		into a write lock to not break potential concurrent access by other threads. Calling tryConvertToWriteLock() 
+		doesn't block but may return a zero stamp indicating that no write lock is currently available. 
+		In that case we call writeLock() to block the current thread until a write lock is available.
 		*/
 
 		System.out.println("===Example of a read and write situation with StampedLock and using tryConvertToWriteLock===");
