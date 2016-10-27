@@ -78,6 +78,17 @@ public class AtomicPrac {
 		System.out.println(atomicInt.get());    // => 
 	}
 
+	/*
+	LongAdder provides methods add() and increment() just like the atomic number classes and is also 
+	thread-safe. But instead of summing up a single result this class maintains a set of variables 
+	internally to reduce contention over threads. The actual result can be retrieved by calling sum() or 
+	sumThenReset().
+
+	This class is usually preferable over atomic numbers when updates from multiple threads are more 
+	common than reads. This is often the case when capturing statistical data, e.g. you want to count 
+	the number of requests served on a web server. The drawback of LongAdder is higher memory consumption 
+	because a set of variables is held in-memory.
+	*/
 	public static void longAdderExample() {
 		System.out.println("===Example of a long adder===");
 
@@ -106,6 +117,6 @@ public class AtomicPrac {
 
 		ConcurrentUtils.stop(executor);
 
-		System.out.println(accumulator.getThenReset());     // => 2539
+		System.out.println(accumulator.getThenReset());     // => 
 	}
 }
