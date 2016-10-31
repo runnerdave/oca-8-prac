@@ -20,7 +20,7 @@ public class AtomicPrac {
 		AtomicPrac ap = new AtomicPrac();
 		
 		System.out.println("===Example of a AtomicInteger vs a regular int===");
-		ExecutorService executor = Executors.newFixedThreadPool(10);
+		/*ExecutorService executor = Executors.newFixedThreadPool(10);
 
 		AtomicInteger aInt = new AtomicInteger(5);
 
@@ -50,7 +50,7 @@ public class AtomicPrac {
 
 		System.out.println("final atoInt:" + atoInt.get());    // => 3005	
 
-		ConcurrentUtils.stop(executor2);		    
+		ConcurrentUtils.stop(executor2);		*/    
 
 		AtomicInteger atomicInt = new AtomicInteger(0);
 
