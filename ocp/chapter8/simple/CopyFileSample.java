@@ -27,7 +27,7 @@ public class CopyFileSample {
 				while ((lengthRead = in.read(buffer)) > 0) {
 					out.write(buffer,0,lengthRead);
 					out.flush(); 
-			}
+				}
 		} 
 	}
 	public static void main(String[] args) throws IOException { 
@@ -39,7 +39,7 @@ public class CopyFileSample {
 		copy(source,destination);
 		long endTime = System.nanoTime();
 		System.out.println("Time for copy method:" + (endTime-startTime)/1000000);
-		
+
 		startTime = System.nanoTime();
 		copyModifiedFaster(source,destination);
 		endTime = System.nanoTime();
