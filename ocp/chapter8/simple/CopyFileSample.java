@@ -30,6 +30,33 @@ public class CopyFileSample {
 				}
 		} 
 	}
+	public static void copyReaderWriter(File source, File destination) throws IOException {
+		try (Reader in = new FileReader(source);
+			 Writer out = new FileWriter(destination)) {
+			int b;
+			while((b = in.read()) != -1) {
+				out.write(b); 
+			}
+		}
+	}
+	public static void copyReaderWriterFaster(File source, File destination) throws IOException {
+		try (Reader in = new BufferedReader(new FileReader(source));
+			 Writer out = new BufferedWriter(new FileWriter(destination))) {
+			int b;
+			while((b = in.read()) != -1) {
+				out.write(b); 
+			}
+		}
+	}
+	public static void copyStreamToWriter(File source, File destination) throws IOException {
+		try (Reader in = new InputStreamReader(new FileInputStream(source));
+			 Writer out = new FileWriter(destination)) {
+			int b;
+			while((b = in.read()) != -1) {
+				out.write(b); 
+			}
+		}
+	}
 	public static void main(String[] args) throws IOException { 
 		// File file = new File("data/Zoo.class");
 		// System.out.println(file.exists());
@@ -49,5 +76,20 @@ public class CopyFileSample {
 		copyFasterProper(source,destination);
 		endTime = System.nanoTime();
 		System.out.println("Time for copyFasterProper method:" + (endTime-startTime)/1000000);
+
+		startTime = System.nanoTime();
+		copyReaderWriter(source,destination);
+		endTime = System.nanoTime();
+		System.out.println("Time for copyReaderWriter method:" + (endTime-startTime)/1000000);
+
+		startTime = System.nanoTime();
+		copyReaderWriterFaster(source,destination);
+		endTime = System.nanoTime();
+		System.out.println("Time for copyReaderWriterFaster method:" + (endTime-startTime)/1000000);
+
+		startTime = System.nanoTime();
+		copyStreamToWriter(source,destination);
+		endTime = System.nanoTime();
+		System.out.println("Time for copyStreamToWriter method:" + (endTime-startTime)/1000000);
 	} 
 }
