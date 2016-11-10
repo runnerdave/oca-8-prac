@@ -1,4 +1,4 @@
-
+import java.util.*;
 import java.io.*;
 
 public class q22 {
@@ -28,8 +28,21 @@ public class q22 {
 	since name is marked transient.	 
 
 	*/
-	public static void main(String... args) throws FileNotFoundException {
-		System.out.println("Reading from Eagle:");
+	public static void main(String... args) throws FileNotFoundException, IOException,
+													ClassNotFoundException {
+		List<Bird> birds = new ArrayList<>();
+		Bird bird1 = new Bird();
+		bird1.setName("Pedro");
+		Bird bird2 = new Bird();
+		bird2.setName("Juan");
+		birds.add(bird1);
+		birds.add(bird2);
+		System.out.println("List of Birds before serialization:" + birds);
+		//serialize to file
+		File dataFile = new File("birds.data"); 
+		SerializerUtils.createBirdsFile(birds, dataFile);
+		System.out.println("Reading from birds:");
+		System.out.println(SerializerUtils.getBirds(dataFile));
 	}
 }
 
@@ -43,6 +56,10 @@ class Bird implements Serializable {
 	}
 	public Bird() {
 		this.name = "Matt"; 
+	}
+	@Override
+	public String toString() {
+		return "my name is:" + this.name;
 	}
 }
 

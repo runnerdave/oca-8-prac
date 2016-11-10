@@ -1,5 +1,5 @@
 
-
+import java.util.*;
 import java.io.*;
 
 public class q21 {
@@ -32,8 +32,27 @@ public class q21 {
 	it will be available on the class after deserialization.
 
 	*/
-	public static void main(String... args) throws FileNotFoundException {
-		System.out.println("Reading from Zebra:");
+	public static void main(String... args) throws FileNotFoundException, IOException,
+													ClassNotFoundException {
+		ArrayList<Zebra> myZebras = new ArrayList<>();
+		Zebra zebra1 = new Zebra();
+		zebra1.setName("zebra1");
+		zebra1.setAge(13);
+		zebra1.setBirthPlace("Holland");
+		zebra1.setTail(new Tail());
+		Zebra zebra2 = new Zebra();
+		zebra2.setName("zebra2");
+		zebra2.setAge(14);
+		zebra2.setBirthPlace("Caracas");
+		zebra2.setTail(new Tail());
+		myZebras.add(zebra1);
+		myZebras.add(zebra2);
+		System.out.println("List of Zebras before serialization:" + myZebras);
+		//serialize to file
+		File dataFile = new File("zebras.data"); 
+		SerializerUtils.createZebrasFile(myZebras, dataFile);
+		System.out.println("Reading from myZebras:");
+		System.out.println(SerializerUtils.getZebras(dataFile));
 	}
 }
 
@@ -43,9 +62,45 @@ class Zebra implements Serializable {
 	private static String birthPlace = "Africa"; 
 	private transient Integer age;
 	private java.util.List<Zebra> friends = new java.util.ArrayList<>(); 
-	private Object tail = null;
+	private Tail tail = null;
 	{ age = 10;}
 	public Zebra() { 
 		this.name = "Sophia";
-	} 
+	}
+
+	//added by me:
+	public String getName() {
+		return this.name;
+	}
+	public static String getBirthPlace() {
+		return Zebra.birthPlace;
+	}
+	public Integer getAge() {
+		return this.age;
+	}
+	public Tail getTail() {
+		return this.tail;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public static void setBirthPlace(String birthPlace) {
+		Zebra.birthPlace = birthPlace;
+	}
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+	public void setTail(Tail tail) {
+		this.tail = tail;
+	}
+	@Override
+	public String toString() {
+		return "name:" + name 
+				+ " - birthPlace:" + birthPlace 
+				+ " - age:" + age 
+				+ " - tail:" + tail;
+				
+	}
 }
+
+class Tail implements Serializable {}
