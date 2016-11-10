@@ -26,8 +26,11 @@ public class q23 {
 
 
 	*/
-	public static void main(String... args) throws FileNotFoundException {
+	public static void main(String... args) throws FileNotFoundException, IOException {
 		System.out.println("Reading from pullBytes:");
+		String str = "XYZABC";
+		InputStream is = new  ByteArrayInputStream(str.getBytes());
+		System.out.println(pullBytes(is, 3));
 	}
 
 	public static String pullBytes(InputStream is, int count) throws IOException {
