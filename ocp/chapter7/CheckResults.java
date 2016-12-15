@@ -9,8 +9,10 @@ public class CheckResults {
 			Future<?> result = service.submit(() -> {
 											for(int i=0; i<500; i++) CheckResults.counter++; 
 										});
+			System.out.println("value of counter: " + counter);
 			result.get(10, TimeUnit.SECONDS);
 			System.out.println("Reached!");
+			System.out.println("value of counter: " + counter);
 		} catch (TimeoutException e) {
 			System.out.println("Not reached in time"); 
 		} finally {

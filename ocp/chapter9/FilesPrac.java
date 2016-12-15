@@ -1,4 +1,5 @@
 import java.nio.file.*;
+import java.nio.charset.*;
 import java.net.*;
 import java.io.IOException;
 import java.io.*;
@@ -52,5 +53,35 @@ public class FilesPrac {
 		} catch (IOException e) {
 		// Handle file I/O exception...
 		}
+
+		System.out.println("======Reading a file (employees.csv): =======");
+		Path path = Paths.get("data/employees.csv");
+		try (BufferedReader reader = Files.newBufferedReader(path, Charset.forName("US-ASCII"))) {
+			// Read from the stream
+			String currentLine = null;
+			while((currentLine = reader.readLine()) != null)
+			System.out.println(currentLine); } 
+		catch (IOException e) {
+			// Handle file I/O exception... 
+		}
+
+		System.out.println("======Writing to a file (employees.csv): =======");
+		try (BufferedWriter writer = Files.newBufferedWriter(path, Charset.forName("US-ASCII"), 
+					StandardOpenOption.APPEND);) {
+			
+			//write to file
+			writer.write("petra,3,77789,Anaco"); }
+		catch (IOException e) {
+			// Handle file I/O exception... 
+		}
+		try (BufferedReader reader = Files.newBufferedReader(path, Charset.forName("US-ASCII"))) {
+			// Read from the stream
+			String currentLine = null;
+			while((currentLine = reader.readLine()) != null)
+			System.out.println(currentLine); } 
+		catch (IOException e) {
+			// Handle file I/O exception... 
+		}
+
 	}
 }
