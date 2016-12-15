@@ -1,6 +1,7 @@
 import java.nio.file.*;
 import java.net.*;
 import java.io.IOException;
+import java.io.*;
 
 public class FilesPrac {
 	public static void main(String... args) {
@@ -29,5 +30,27 @@ public class FilesPrac {
 		// Handle file I/O exception...
 			e.printStackTrace();
 		} 
+
+		System.out.println("======Directory copying: =======");
+		try {
+			Path path0 = Paths.get("data/employees.csv");
+			Path path01 = Paths.get("data/employees3.csv");
+			Files.copy(path0, path01, StandardCopyOption.REPLACE_EXISTING);
+			System.out.println("both directories exist? should be true,true:" 
+					+ Files.exists(path0) + "," + Files.exists(path01));
+		} catch (IOException e) {
+		// Handle file I/O exception...
+			e.printStackTrace();
+		} 
+
+		try (InputStream is = new FileInputStream("data/employees.csv");
+				OutputStream out = new FileOutputStream("data/employees3.csv")) {		 
+			// Copy stream data to file
+			Files.copy(is, Paths.get("data/wolf.txt"));
+			// Copy file data to stream
+			Files.copy(Paths.get("data/employees.csv"), out);
+		} catch (IOException e) {
+		// Handle file I/O exception...
+		}
 	}
 }

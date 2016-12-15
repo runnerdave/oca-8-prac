@@ -1,0 +1,2 @@
+pedro,1,44455,Caracas
+juan,2,44456,Maracaibo
