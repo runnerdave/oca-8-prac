@@ -3,6 +3,11 @@ import java.nio.charset.*;
 import java.net.*;
 import java.io.IOException;
 import java.io.*;
+import java.nio.file.attribute.UserPrincipal;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.FileTime;
+import java.time.*;
 
 public class FilesPrac {
 	public static void main(String... args) {
@@ -60,18 +65,27 @@ public class FilesPrac {
 			// Read from the stream
 			String currentLine = null;
 			while((currentLine = reader.readLine()) != null)
-			System.out.println(currentLine); } 
+			System.out.println(currentLine); 
+
+			System.out.println("---Last modification:" + Files.getLastModifiedTime(path).toMillis());
+			System.out.println("---Last modification:" + Files.getLastModifiedTime(path).toString());
+		} 
 		catch (IOException e) {
 			// Handle file I/O exception... 
 		}
 
 		System.out.println("======Writing to a file (employees.csv): =======");
 		try (BufferedWriter writer = Files.newBufferedWriter(path, Charset.forName("US-ASCII"), 
-					StandardOpenOption.APPEND);) {
+					StandardOpenOption.APPEND);
+			BufferedReader reader = Files.newBufferedReader(path, Charset.forName("US-ASCII"))) {
+
 			
-			//write to file
-			writer.write("petra,3,77789,Anaco"); }
-		catch (IOException e) {
+			//write to file only if last line is not petra
+			if (checkLastLine("petra,3,77789,Anaco", reader)) {
+				writer.write("\npetra,3,77789,Anaco");
+			}
+			 
+		} catch (IOException e) {
 			// Handle file I/O exception... 
 		}
 		try (BufferedReader reader = Files.newBufferedReader(path, Charset.forName("US-ASCII"))) {
@@ -83,5 +97,57 @@ public class FilesPrac {
 			// Handle file I/O exception... 
 		}
 
+		System.out.println("======get the owner information for file (employees.csv): =======");
+
+		try {
+			System.out.println(Files.getOwner(path).getName());
+			UserPrincipal owner = path.getFileSystem()
+				.getUserPrincipalLookupService().lookupPrincipalByName("davidajimenez");
+			System.out.println(owner);	
+			Files.setOwner(path, owner);
+		} catch (IOException e) {
+			//will print info if the owner is not present
+			e.printStackTrace();
+		} 
+
+		System.out.println("======get the information using Views (BasicFileAttributes) for file (employees.csv): =======");
+		try {
+
+			getFileAttributesReadOnly(path);
+			System.out.println("%%%%%% modify file:");
+			setFileAttributes(path);
+			System.out.println("%%%%%% read file again:");
+			getFileAttributesReadOnly(path);
+		} catch (IOException e) {
+			//will print info if the owner is not present
+			e.printStackTrace();
+		} 
+	}
+
+	private static boolean checkLastLine(String value, BufferedReader reader) throws IOException {
+		boolean hasValueAsLastLine = false;
+		//reader.lines().peek(System.out::println).forEach(s->s.toString());
+		hasValueAsLastLine = reader.lines().noneMatch(s->s.trim().equalsIgnoreCase(value));
+		return hasValueAsLastLine;
+	}
+
+	private static void getFileAttributesReadOnly(Path path) throws IOException {
+		BasicFileAttributes data = Files.readAttributes(path, BasicFileAttributes.class);
+		System.out.println("Is path a directory? "+data.isDirectory());
+		System.out.println("Is path a regular file? "+data.isRegularFile());
+		System.out.println("Is path a symbolic link? "+data.isSymbolicLink());
+		System.out.println("Path not a file, directory, nor symbolic link? "+ data.isOther());
+		System.out.println("Size (in bytes): "+data.size());
+		System.out.println("Creation date/time: "+data.creationTime());
+		System.out.println("Last modified date/time: "+data.lastModifiedTime());
+		System.out.println("Last accessed date/time: "+data.lastAccessTime());
+		System.out.println("Unique file identifier (if available): "+ data.fileKey());
+	}
+
+	private static void setFileAttributes(Path path) throws IOException {
+		BasicFileAttributeView view = Files.getFileAttributeView(path,BasicFileAttributeView.class);
+		BasicFileAttributes data = view.readAttributes();
+		FileTime now = FileTime.from( Instant.now());
+		view.setTimes(now,null,null);
 	}
 }
