@@ -3,4 +3,6 @@
 .DS_Store
 *.iml
 /out/
+ocp/chapter10/derby.log
+/ocp/chapter10/zoo/
 /.idea/
