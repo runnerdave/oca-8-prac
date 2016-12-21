@@ -7,8 +7,8 @@ public class SetupDerbyDatabase {
       try (Connection conn = DriverManager.getConnection(url); 
            Statement stmt = conn.createStatement()) {
 			
-	   stmt.executeUpdate("DROP TABLE animal");
-	   stmt.executeUpdate("DROP TABLE species");
+	   // stmt.executeUpdate("DROP TABLE animal");
+	   // stmt.executeUpdate("DROP TABLE species");
 			
 	   stmt.executeUpdate("CREATE TABLE species ("
 	        + "id INTEGER PRIMARY KEY, "

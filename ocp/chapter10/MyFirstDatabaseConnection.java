@@ -5,7 +5,8 @@ public class MyFirstDatabaseConnection {
 		try (Connection conn = DriverManager.getConnection(url);
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("select name from animal")) {
-				while (rs.next()) System.out.println(rs.getString(1));
+				while (rs.next())
+				System.out.println(rs.getString(1));
 		}
 	}
 }
