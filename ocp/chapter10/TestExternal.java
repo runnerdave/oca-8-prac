@@ -40,6 +40,12 @@ public class TestExternal {
         System.out.println(rs.first()); // true
         System.out.println(rs.getInt(1)); // 1
         rs.beforeFirst();
-        System.out.println(rs.getInt(1)); // throws SQLException
+        //System.out.println(rs.getInt(1)); // uncomment to show how it throws SQLException
+
+        System.out.println();
+        System.out.println("== Test for execute ==");
+        boolean exec = stmt.execute("select * from messages");
+        System.out.println(exec);
+
     }
 }
