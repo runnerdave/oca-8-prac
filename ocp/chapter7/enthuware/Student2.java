@@ -1,3 +1,6 @@
+import java.util.*;
+import java.util.concurrent.locks.*;
+
 public class Student2 {
     private Map<String, Integer> marksObtained = new HashMap<String, Integer>();
     private ReadWriteLock lock = new ReentrantReadWriteLock();
@@ -23,7 +26,7 @@ public class Student2 {
     }
     public static void main(String[] args) {
         
-        final Student s = new Student();
+        final Student2 s = new Student2();
 
         //create one thread that keeps adding marks
         new Thread(){
