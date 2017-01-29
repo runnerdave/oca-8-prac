@@ -13,6 +13,11 @@ public class q1 {
 	E. ObjectOutputStream 
 	F. BufferedReader
 
+	InputStream is = new BufferedInputStream(new FileInputStream("zoo.txt"));
+	InputStream wrapper = new _________  (is);
+
+
+
 	Answer: A;D 
 	The reference is for an InputStream object, so only a high-level input Stream class is permitted. 
 	B is incorrect because FileInputStream is a low-level stream that interacts directly with a 
