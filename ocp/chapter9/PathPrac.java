@@ -21,18 +21,39 @@ public class PathPrac {
 		System.out.println("===========Relativizing paths: =================");
 		Path path4 = Paths.get("fish.txt");
 		Path path5 = Paths.get("birds.txt");
-		System.out.println(path4.relativize(path5));
+		System.out.println("====Path 4====");		
+		printPathInformation(path4);
+		System.out.println("====Path 5====");
+		printPathInformation(path5);
+		System.out.println("====path4.relativize(path5)====");
+		// System.out.println(path4.relativize(path5));		
+		printPathInformation(path4.relativize(path5));
+		System.out.println("====path5.relativize(path4)====");
 		System.out.println(path5.relativize(path4));
 
 		Path path6 = Paths.get("E:\\habitat");
+		System.out.println("====Path6====");
+		printPathInformation(path6);
 		Path path7 = Paths.get("E:\\sanctuary\\raven");
+		System.out.println("====Path7====");
+		printPathInformation(path7);
+		System.out.println("====path6.relativize(path7)====");
 		System.out.println(path6.relativize(path7));
+		System.out.println("====path7.relativize(path6)====");
 		System.out.println(path7.relativize(path6));
 
 		System.out.println("===========Evaluating real paths: =================");
 		System.out.println("evaluating path1:" + realPath(path1));
 		System.out.println("evaluating path4:" + realPath(path4));
 		System.out.println("current working directory:" + realPath(Paths.get(".")));
+
+		System.out.println("===========Sub paths: =================");
+		System.out.println("path1.subPath(0,1):" + path1.subpath(0,1));
+		System.out.println("path1.subPath(1,2):" + path1.subpath(1,2));
+		System.out.println("path1.getName(1):" + path1.getName(1));
+		// System.out.println("path1.getName(2):" + path1.getName(2));//THROWS EXCEPTION
+		
+		
 	}
 	public static void printPathInformation(Path path) {
 		System.out.println("The Path Name is: "+path);
@@ -62,7 +83,17 @@ public class PathPrac {
 			        at sun.nio.fs.WindowsPath.toRealPath(Unknown Source)
 			        at sun.nio.fs.WindowsPath.toRealPath(Unknown Source)
 			        at PathPrac.realPath(PathPrac.java:54)
-			        at PathPrac.main(PathPrac.java:34)*/
+			        at PathPrac.main(PathPrac.java:34)
+
+			 or in mac:
+			 java.nio.file.NoSuchFileException: fish.txt
+				at sun.nio.fs.UnixException.translateToIOException(UnixException.java:86)
+				at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:102)
+				at sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:107)
+				at sun.nio.fs.UnixPath.toRealPath(UnixPath.java:837)
+				at PathPrac.realPath(PathPrac.java:68)
+				at PathPrac.main(PathPrac.java:47)*/
+			// e.printStackTrace();
 
 		}
 		return realPath;

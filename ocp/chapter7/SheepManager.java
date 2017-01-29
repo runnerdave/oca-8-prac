@@ -21,13 +21,13 @@ public class SheepManager {
 	public static void main(String[] args) {
 		ExecutorService service = null;
 		try {
-			/**service = Executors.newFixedThreadPool(10);
+			service = Executors.newFixedThreadPool(10);
 			SheepManager manager = new SheepManager();
 			System.out.println("none: ");
 			for(int i=0; i<10; i++) {
 				service.submit(() -> manager.incrementAndReport());
 			}	
-			service = Executors.newFixedThreadPool(10);
+			/**service = Executors.newFixedThreadPool(10);
 			SheepManager managerAtomic = new SheepManager();
 			System.out.println("\natomic: ");
 			for(int i=0; i<10; i++) {
@@ -40,12 +40,12 @@ public class SheepManager {
 				service.submit(() -> managerSync.incrementAndReportSynchronized());
 			}	*/	
 
-			/**/	service = Executors.newFixedThreadPool(10);
+			/*	service = Executors.newFixedThreadPool(10);
 			SheepManager managerSync = new SheepManager();
 			System.out.println("\nsynchronized method: ");
 			for(int i=0; i<10; i++) {
 				service.submit(() -> managerSync.incrementAndReportSynchronizedMethod());
-			}				
+			}*/				
 		} finally {
 			if(service != null) service.shutdown();
 		}

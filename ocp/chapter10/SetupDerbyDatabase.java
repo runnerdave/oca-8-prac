@@ -6,9 +6,24 @@ public class SetupDerbyDatabase {
       String url = "jdbc:derby:zoo;create=true";
       try (Connection conn = DriverManager.getConnection(url); 
            Statement stmt = conn.createStatement()) {
-			
-	   // stmt.executeUpdate("DROP TABLE animal");
-	   // stmt.executeUpdate("DROP TABLE species");
+
+      	//clean up from previous calls
+
+		DatabaseMetaData databaseMetadata = conn.getMetaData();
+
+		ResultSet resultSet = databaseMetadata.getTables(null, null, "ANIMAL", null);
+		if (resultSet.next()) {
+			stmt.executeUpdate("DROP TABLE ANIMAL");
+		}
+
+		resultSet = databaseMetadata.getTables(null, null, "SPECIES", null);
+		if (resultSet.next()) {
+			stmt.executeUpdate("DROP TABLE SPECIES");
+		}
+
+		
+		//start of actual exercise
+
 			
 	   stmt.executeUpdate("CREATE TABLE species ("
 	        + "id INTEGER PRIMARY KEY, "

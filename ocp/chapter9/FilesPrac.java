@@ -20,6 +20,7 @@ public class FilesPrac {
 		Path path2 = Paths.get("data/field/pasture/green");
 		Path path3 = path2.subpath(0,3);
 		try {
+			//cleanup previous unfinished calls
 			Files.deleteIfExists(path2);
 			Files.deleteIfExists(path3);
 			Files.deleteIfExists(path1);
