@@ -87,10 +87,28 @@ public class ReducePracFromJAVAAPI {
 
 	public static void main(String... args) {
 		List<Integer> numbers = Arrays.asList(1,2,3);
+
+		System.out.println("==With loop===");
 		int sum = 0;
 	    for (int x : numbers) {
 	       sum += x;
 	       System.out.println(sum);
 	    }
+
+	    System.out.println("==With reduction that has identity and accumulator===");
+
+	    sum = numbers.stream().reduce(0, (x,y)->{System.out.println("reducing:" + x + " and " + y);
+	    											return (x+y);}
+	    							 );
+	    System.out.println("sum:" + sum);
+
+	    System.out.println("==With reduction that has identity and accumulator and combiner===");
+
+	    sum = numbers.stream().reduce(0, (x,y)->{System.out.println("reducing:" + x + " and " + y);
+	    											return (x+y);},
+	    								 (x,y)->(x+y)
+	    							 );
+	    System.out.println("sum:" + sum);
+
 	}
 }
