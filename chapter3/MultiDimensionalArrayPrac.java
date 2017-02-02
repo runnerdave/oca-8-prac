@@ -48,7 +48,23 @@ public class MultiDimensionalArrayPrac {
       int i6[][] = new int [2][5];
       System.out.println("initial values:" + Arrays.deepToString(i6));
       i6[1][3] = 1;
-      System.out.println("i6[1][3] = 1:" + Arrays.deepToString(i6));      
+      System.out.println("i6[1][3] = 1:" + Arrays.deepToString(i6));    
+
+      for(int k=0; k<i6.length; k++)  {
+            System.out.print("|");
+            for(int j=0; j<i6[0].length; j++) {
+                  System.out.print(i6[k][j] + "|");
+            }
+            System.out.print("\n");
+      }
+
+      for(int k=0; k<i6[0].length; k++)  {
+            System.out.print("|");
+            for(int j=0; j<i6.length; j++) {
+                  System.out.print(i6[j][k] + "|");
+            }
+            System.out.print("\n");
+      }
 
    }
 }
