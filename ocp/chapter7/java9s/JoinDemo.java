@@ -1,4 +1,4 @@
-
+import java.lang.Thread.State;
 
 public class JoinDemo {
 	public static Thread firstThread;
@@ -10,15 +10,15 @@ public class JoinDemo {
 		firstThread.start();
 
 		while(true){
-		State firstThreadStatus = firstThread.getState();
-		State secondThreadStatus = secondThread.getState();
-		System.out.println(System.nanoTime()+" First Thread status:"+firstThreadStatus);
-		System.out.println(System.nanoTime()+" Second Thread Status :"+secondThreadStatus);
-		if(firstThreadStatus.equals(State.TERMINATED)&amp;&amp;secondThreadStatus.equals(State.TERMINATED)){
-		break;
+			State firstThreadStatus = firstThread.getState();
+			State secondThreadStatus = secondThread.getState();
+			System.out.println(System.nanoTime()+" First Thread status:"+firstThreadStatus);
+			System.out.println(System.nanoTime()+" Second Thread Status :"+secondThreadStatus);
+			if(firstThreadStatus.equals(State.TERMINATED) && secondThreadStatus.equals(State.TERMINATED)){
+				break;
+			}
 		}
-	}
-	// secondThread.start();
+		// secondThread.start();
 
 	}
 
