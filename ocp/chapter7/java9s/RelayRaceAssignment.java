@@ -98,6 +98,13 @@ public class RelayRaceAssignment {
 			System.out.println(k + ":");			
 			System.out.println(printTeamTimeDetails(v));
 		});
+
+		System.out.println("====time comparison end of first vs start of second====");
+		System.out.println("GER:" + (gerRunner1.getEndTime() - gerRunner2.getStartTime()));
+		System.out.println("USA:" + (usaRunner1.getEndTime() - usaRunner2.getStartTime()));
+		System.out.println("JAM:" + (jamRunner1.getEndTime() - jamRunner2.getStartTime()));
+		System.out.println("TT:" + (ttRunner1.getEndTime() - ttRunner2.getStartTime()));
+		System.out.println("NAM:" + (namRunner1.getEndTime() - namRunner2.getStartTime()));
 	}
 
 	static Comparator<List<Runner>> byTotalTime = (l1, l2) -> {
@@ -124,7 +131,9 @@ abstract class Runner implements Runnable {
 
 	protected final CountDownLatch baton;
 	private final String name;
-	protected long totalTime;
+	private long totalTime;
+	private long startTime;
+    private long endTime;
 
 	@Override
 	public String toString() {
@@ -134,6 +143,14 @@ abstract class Runner implements Runnable {
 	long getTotalTime() {
 		return totalTime;
 	}
+
+	long getStartTime() {
+        return startTime;
+    }
+
+    long getEndTime() {
+        return endTime;
+    }
 
 	Runner(CountDownLatch baton, String name) {
 		this.baton = baton;
@@ -153,6 +170,8 @@ abstract class Runner implements Runnable {
 		long endTime = System.nanoTime();
 		System.out.println(name + " finished at: " + endTime);
 		this.totalTime = (endTime - startTime);
+		this.startTime = startTime;
+        this.endTime = endTime;
 		System.out.println("Time taken by " + name + " is: " + totalTime);
 	}
 
