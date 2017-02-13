@@ -15,11 +15,11 @@ public class RelayRaceAssignment {
 	public static void main(String... args) throws InterruptedException, BrokenBarrierException {
 		Map<String, List<Runner>> allTeams = new HashMap<>();
 
-		CountDownLatch batonGER = new CountDownLatch(0);
-    	CountDownLatch batonUSA = new CountDownLatch(0);
-    	CountDownLatch batonJAM = new CountDownLatch(0);
-    	CountDownLatch batonTT = new CountDownLatch(0);
-    	CountDownLatch batonNAM = new CountDownLatch(0);
+		CountDownLatch batonGER = new CountDownLatch(1);
+    	CountDownLatch batonUSA = new CountDownLatch(1);
+    	CountDownLatch batonJAM = new CountDownLatch(1);
+    	CountDownLatch batonTT = new CountDownLatch(1);
+    	CountDownLatch batonNAM = new CountDownLatch(1);
 
     	ThreadGroup ger = new ThreadGroup("Deutschland");
     	Runner gerRunner1 = new FirstRunner(batonGER, "Lars - GER");
@@ -157,7 +157,7 @@ abstract class Runner implements Runnable {
 		this.name = name;
 	}
 
-	public void race(){
+	public synchronized void race(){
 		long startTime = System.nanoTime();
 		System.out.println(name + " started at: " + startTime);
 		for(int distance=1; distance<=200; distance++){
