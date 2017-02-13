@@ -157,7 +157,7 @@ abstract class Runner implements Runnable {
 		this.name = name;
 	}
 
-	public synchronized void race(){
+	public void race(){
 		long startTime = System.nanoTime();
 		System.out.println(name + " started at: " + startTime);
 		for(int distance=1; distance<=200; distance++){

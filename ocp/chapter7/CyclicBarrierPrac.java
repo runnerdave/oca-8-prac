@@ -11,6 +11,7 @@ public class CyclicBarrierPrac {
 				service.submit(() -> manager.performTask());
 			}
 
+			TimeUnit.SECONDS.sleep(2);
 
 			System.out.println("\n\n\n===Running the advanced version:====");
 			LionPenManagerAdvanced advancedManager = new LionPenManagerAdvanced(); 
@@ -20,6 +21,8 @@ public class CyclicBarrierPrac {
 				service.submit(() -> advancedManager.performTask(c1,c2));
 			}
 			 
+		} catch(InterruptedException ie) {
+			//do nothing
 		} finally {
 			if(service != null) service.shutdown(); }
 		} 
@@ -55,7 +58,7 @@ class LionPenManagerAdvanced {
 	}
 	public void performTask(CyclicBarrier c1, CyclicBarrier c2) { 
 		try {
-			removeAnimals();
+			removeAnimals();	
 			c1.await();
 			cleanPen();
 			c2.await();
