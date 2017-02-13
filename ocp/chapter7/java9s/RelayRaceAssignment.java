@@ -100,11 +100,11 @@ public class RelayRaceAssignment {
 		});
 
 		System.out.println("====time comparison end of first vs start of second====");
-		System.out.println("GER:" + (gerRunner1.getEndTime() - gerRunner2.getStartTime()));
-		System.out.println("USA:" + (usaRunner1.getEndTime() - usaRunner2.getStartTime()));
-		System.out.println("JAM:" + (jamRunner1.getEndTime() - jamRunner2.getStartTime()));
-		System.out.println("TT:" + (ttRunner1.getEndTime() - ttRunner2.getStartTime()));
-		System.out.println("NAM:" + (namRunner1.getEndTime() - namRunner2.getStartTime()));
+		System.out.println("GER:" + (gerRunner2.getStartTime() - gerRunner1.getEndTime()));
+		System.out.println("USA:" + (usaRunner2.getStartTime() - usaRunner1.getEndTime()));
+		System.out.println("JAM:" + (jamRunner2.getStartTime() - jamRunner1.getEndTime()));
+		System.out.println("TT:" + (ttRunner2.getStartTime() - ttRunner1.getEndTime()));
+		System.out.println("NAM:" + (namRunner2.getStartTime() - namRunner1.getEndTime()));
 	}
 
 	static Comparator<List<Runner>> byTotalTime = (l1, l2) -> {
