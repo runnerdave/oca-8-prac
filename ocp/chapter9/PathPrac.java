@@ -52,8 +52,39 @@ public class PathPrac {
 		System.out.println("path1.subPath(1,2):" + path1.subpath(1,2));
 		System.out.println("path1.getName(1):" + path1.getName(1));
 		// System.out.println("path1.getName(2):" + path1.getName(2));//THROWS EXCEPTION
-		
-		
+
+		System.out.println("===========Yet another relativize paths prac: =================");
+		Path p8 = Paths.get("home");
+		Path p9 = Paths.get("home/sally/bar");
+		System.out.println("p8:" + p8);
+		System.out.println("p9:" + p9);
+		// Result is sally/bar
+		Path p8_to_p9 = p8.relativize(p9);
+		System.out.println("p8.relativize(p9):" + p8_to_p9);
+		// Result is ../..
+		Path p9_to_p8 = p9.relativize(p8);
+		System.out.println("p9.relativize(p8):" + p9_to_p8);
+		// Result is 
+		Path p9_to_p9 = p9.relativize(p9);
+		System.out.println("p9.relativize(p9):" + p9_to_p9); //because relativizing the same file returns an empty path
+
+
+		System.out.println("===========resolving paths prac: =================");
+		Path p8_resolve_to_p9 = p8.resolve(p9);
+		//Result is home\home\sally\bar
+		System.out.println("p8.resolve(p9):" + p8_resolve_to_p9);
+		Path p9_resolve_to_p8 = p9.resolve(p8);
+		//Result is home\sally\bar\home
+		System.out.println("p9.resolve(p8):" + p9_resolve_to_p8);
+
+		System.out.println("===========normalizing paths prac: =================");
+		Path path10 = Paths.get("home/../../foo/../bar");
+		//Result is ..\bar
+		System.out.println("path10.normalize():" + path10.normalize());
+		Path path11 = Paths.get("foo/../bar");
+		//Result is bar
+		System.out.println("path11.normalize():" + path11.normalize());
+
 	}
 	public static void printPathInformation(Path path) {
 		System.out.println("The Path Name is: "+path);
