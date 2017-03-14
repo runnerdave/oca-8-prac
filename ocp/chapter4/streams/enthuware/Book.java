@@ -4,8 +4,18 @@ import java.util.stream.*;
 public class Book {
    private String title;
    private String genre;
+   private double price;
+
    public Book(String title, String genre){
         this.title = title; this.genre = genre;
+   }
+
+   public Book(String title, double price){
+        this.title = title; this.price = price;
+   }
+
+   public double getPrice() {
+      return price;
    }
 
    public String getGenre() {
