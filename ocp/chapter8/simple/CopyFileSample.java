@@ -57,6 +57,19 @@ public class CopyFileSample {
 			while((b = in.read()) != -1) {
 				out.write(b); 
 			}
+			//below is a way of using method ready() of InputStreamReader instead:
+			// while(in.ready()) {
+			// 	out.write(in.read()); 
+			// }
+		}
+	}
+	public static void copyStreamToWriterFaster(File source, File destination) throws IOException {
+		try (Reader in = new BufferedReader(new InputStreamReader(new FileInputStream(source)));
+			 Writer out = new BufferedWriter(new FileWriter(destination))) {
+			int b;
+			while((b = in.read()) != -1) {
+				out.write(b); 
+			}
 		}
 	}
 	
@@ -97,5 +110,10 @@ public class CopyFileSample {
 		copyStreamToWriter(source,destination);
 		endTime = System.nanoTime();
 		System.out.println("Time for copyStreamToWriter method:" + formatter.format(endTime-startTime));
+
+		startTime = System.nanoTime();
+		copyStreamToWriterFaster(source,destination);
+		endTime = System.nanoTime();
+		System.out.println("Time for copyStreamToWriterFaster method:" + formatter.format(endTime-startTime));
 	} 
 }

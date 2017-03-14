@@ -1,9 +1,10 @@
 import java.io.*;
-public class PrintWriterSample {
+public class PrintStreamSample {
 	public static void main(String[] args) throws IOException {
 		File source = new File("zoo.log");
-		try (PrintWriter out = new PrintWriter(
-			new BufferedWriter(new FileWriter(source)))) {
+		try (PrintStream out = new PrintStream(
+			new BufferedOutputStream(new FileOutputStream(source)))) {
+				out.println("==With PrintStream==");
 				out.print("Today's weather is: ");
 				out.println("Sunny");
 				out.print("Today's temperature at the zoo is: ");
@@ -16,7 +17,8 @@ public class PrintWriterSample {
 
 		//to a file directly
 		File sourceDirect = new File("zooDirect.log");
-		try (PrintWriter out = new PrintWriter(sourceDirect)) {
+		try (PrintStream out = new PrintStream(sourceDirect)) {
+				out.println("==With PrintStream==");
 				out.println("to file directly");
 				out.print("Today's weather is: ");
 				out.println("Sunny");
