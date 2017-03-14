@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.*;
 
 public class Book {
    private String title;
@@ -15,15 +16,24 @@ public class Book {
    	return title;
    }
 
+   public String toString() {
+      return title + ":" + genre;
+   }
+
    public static void main(String... args) {
    		//and the following code:
 
-		List<Book> books = Arrays.asList(new Book("a","b"), new Book("c","d"));
+		List<Book> books = Arrays.asList(new Book("a","b"), new Book("c","d"), new Book("1","2"));
 
 		Comparator<Book> c1 =  (b1, b2)->b1.getGenre().compareTo(b2.getGenre()); //1
 		books.stream().sorted(c1.thenComparing(Book::getTitle)); //2
 		System.out.println(books);
 
+      //my own stuff
+      Stream<Book> stream = books.stream().sorted(c1.thenComparing(Book::getTitle)); 
+      System.out.println(stream.collect(Collectors.toList()));
+      System.out.println(books);
+      
 		//Identify the correct statements.
    }
 }
