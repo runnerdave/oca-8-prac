@@ -9,7 +9,7 @@ public class PathPrac {
 		// FileSystem fileSystem = FileSystems.getFileSystem( new URI("http://www.selikoff.net"));
 		//Exception in thread "main" java.nio.file.ProviderNotFoundException: Provider "http" not found
 		
-		Path path3 = Paths.get(new URI("file:////data/employees.csv"));
+		Path path3 = Paths.get(new URI("file:///data/employees.csv"));
 
 		System.out.println("====Path 1====");		
 		printPathInformation(path1);
@@ -60,13 +60,15 @@ public class PathPrac {
 		System.out.println("p9:" + p9);
 		// Result is sally/bar
 		Path p8_to_p9 = p8.relativize(p9);
-		System.out.println("p8.relativize(p9):" + p8_to_p9);
+		System.out.println("====p8.relativize(p9):====");
+		printPathInformation(p8_to_p9);
 		// Result is ../..
 		Path p9_to_p8 = p9.relativize(p8);
-		System.out.println("p9.relativize(p8):" + p9_to_p8);
+		System.out.println("====p9.relativize(p8):====");
+		printPathInformation(p9_to_p8);
 		// Result is 
 		Path p9_to_p9 = p9.relativize(p9);
-		System.out.println("p9.relativize(p9):" + p9_to_p9); //because relativizing the same file returns an empty path
+		System.out.println("====p9.relativize(p9):" + p9_to_p9); //because relativizing the same file returns an empty path
 
 
 		System.out.println("===========resolving paths prac: =================");
