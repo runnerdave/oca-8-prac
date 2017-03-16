@@ -1,4 +1,6 @@
 import java.io.*;
+import java.text.DecimalFormat;
+
 public class CopyFileSample {
 	public static void copy(File source, File destination) throws IOException {
 		try (InputStream in = new FileInputStream(source); 
@@ -55,41 +57,63 @@ public class CopyFileSample {
 			while((b = in.read()) != -1) {
 				out.write(b); 
 			}
+			//below is a way of using method ready() of InputStreamReader instead:
+			// while(in.ready()) {
+			// 	out.write(in.read()); 
+			// }
 		}
 	}
+	public static void copyStreamToWriterFaster(File source, File destination) throws IOException {
+		try (Reader in = new BufferedReader(new InputStreamReader(new FileInputStream(source)));
+			 Writer out = new BufferedWriter(new FileWriter(destination))) {
+			int b;
+			while((b = in.read()) != -1) {
+				out.write(b); 
+			}
+		}
+	}
+	
 	public static void main(String[] args) throws IOException { 
-		// File file = new File("data/Zoo.class");
-		// System.out.println(file.exists());
-		File source = new File("data/Zoo.class");
-		File destination = new File("data/ZooCopy.class"); 
-		long startTime = System.nanoTime();
-		copy(source,destination);
-		long endTime = System.nanoTime();
-		System.out.println("Time for copy method:" + (endTime-startTime)/1000000);
+		DecimalFormat formatter = new DecimalFormat("#,###");
 
-		startTime = System.nanoTime();
-		copyModifiedFaster(source,destination);
-		endTime = System.nanoTime();
-		System.out.println("Time for copyModifiedFaster method:" + (endTime-startTime)/1000000);
+		File source = new File("data/Zoo.txt");
+		File destination = new File("data/ZooCopy.txt"); 
+		Long startTime;
+		long endTime;
 
 		startTime = System.nanoTime();
 		copyFasterProper(source,destination);
 		endTime = System.nanoTime();
-		System.out.println("Time for copyFasterProper method:" + (endTime-startTime)/1000000);
+		System.out.println("Time for copyFasterProper method:" + formatter.format(endTime-startTime));		
+
+		startTime = System.nanoTime();
+		copyModifiedFaster(source,destination);
+		endTime = System.nanoTime();
+		System.out.println("Time for copyModifiedFaster method:" + formatter.format(endTime-startTime));		
+
+		startTime = System.nanoTime();
+		copy(source,destination);
+		endTime = System.nanoTime();
+		System.out.println("Time for copy method:" + formatter.format(endTime-startTime));
 
 		startTime = System.nanoTime();
 		copyReaderWriter(source,destination);
 		endTime = System.nanoTime();
-		System.out.println("Time for copyReaderWriter method:" + (endTime-startTime)/1000000);
+		System.out.println("Time for copyReaderWriter method:" + formatter.format(endTime-startTime));
 
 		startTime = System.nanoTime();
 		copyReaderWriterFaster(source,destination);
 		endTime = System.nanoTime();
-		System.out.println("Time for copyReaderWriterFaster method:" + (endTime-startTime)/1000000);
+		System.out.println("Time for copyReaderWriterFaster method:" + formatter.format(endTime-startTime));
 
 		startTime = System.nanoTime();
 		copyStreamToWriter(source,destination);
 		endTime = System.nanoTime();
-		System.out.println("Time for copyStreamToWriter method:" + (endTime-startTime)/1000000);
+		System.out.println("Time for copyStreamToWriter method:" + formatter.format(endTime-startTime));
+
+		startTime = System.nanoTime();
+		copyStreamToWriterFaster(source,destination);
+		endTime = System.nanoTime();
+		System.out.println("Time for copyStreamToWriterFaster method:" + formatter.format(endTime-startTime));
 	} 
 }
