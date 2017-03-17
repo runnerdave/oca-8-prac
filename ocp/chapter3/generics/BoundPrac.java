@@ -20,8 +20,11 @@ public class BoundPrac {
 		List<String> keywords = new ArrayList<>();
 		keywords.add("java");
 		//printListBad(keywords); // DOES NOT COMPILE
+		System.out.println("==Printing list unbound==");
 		printListUnbound(keywords); //WORKS!!
+		System.out.println("==Printing list upperbound==");
 		printListUpperbound(keywords); //WORKS!!
+		System.out.println("==Printing list lowerbound==");
 		printListLowerbound(keywords); //WORKS!!
 		//printListLowerboundObject(keywords); //DOES NOT COMPILE incompatible types: List<String> cannot be converted to List<? super Object>
 
@@ -29,6 +32,8 @@ public class BoundPrac {
 		//exceptions.add(new Exception()); // DOES NOT COMPILE because the list can be of IOException and Exception does not fit
 		exceptions.add(new IOException());
 		exceptions.add(new FileNotFoundException());
+		System.out.println("==lower bound list (? super IOException) with exceptions==");
+		System.out.println(exceptions);
 
 		List<?> list1 = new ArrayList<A>();
 		//list1.add(new A()); //DOES NOT COMPILE because list1 became immutable
