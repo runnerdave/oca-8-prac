@@ -24,6 +24,7 @@ public class TestClass35 {
 	public static void main(String[] args) {
 		Office off = new HomeOffice(); //1
 		System.out.println(off.getAddress()); //2
+		//WORKING VERSION System.out.println(Office.getAddress()); //2
 	}
 }
 

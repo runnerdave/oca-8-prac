@@ -5,5 +5,8 @@ public class L18nPrac {
 		System.out.println(locale);
 		System.out.println(Locale.GERMANY);
 		System.out.println(new Locale("es", "VE"));
+		Locale.setDefault(Locale.GERMANY);
+		locale = Locale.getDefault(); 
+		System.out.println(locale);
 	}
 }
