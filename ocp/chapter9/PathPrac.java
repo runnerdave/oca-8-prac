@@ -87,6 +87,29 @@ public class PathPrac {
 		//Result is bar
 		System.out.println("path11.normalize():" + path11.normalize());
 
+		System.out.println("===========normalizing paths and relativizing prac: =================");
+		//windows version
+		// Path p12 = Paths.get("c:\\personal\\.\\photos\\..\\readme.txt");
+		// Path p13 = Paths.get("c:\\personal\\index.html"); 
+		//linux version
+		Path p12 = Paths.get("/c/personal/./photos/../readme.txt");
+		Path p13 = Paths.get("/c/personal/index.html"); 
+		Path p14 = p12.relativize(p13); 
+		System.out.println(p14);
+		System.out.println("p12 normalized:" + p12.normalize());
+		System.out.println(p12.normalize().relativize(p13));
+
+		//another case note the \
+
+		//windows version
+		// Path p15 = Paths.get("\\photos\\vacation");
+		// Path p16 = Paths.get("\\yellowstone");
+		//linux version
+		Path p15 = Paths.get("//photos//vacation");
+		Path p16 = Paths.get("//yellowstone");
+		System.out.println(p15.resolve(p16)+"  "+p15.relativize(p16));
+
+
 	}
 	public static void printPathInformation(Path path) {
 		System.out.println("The Path Name is: "+path);
