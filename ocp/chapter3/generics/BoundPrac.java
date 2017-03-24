@@ -27,6 +27,10 @@ public class BoundPrac {
 		System.out.println("==Printing list lowerbound==");
 		printListLowerbound(keywords); //WORKS!!
 		//printListLowerboundObject(keywords); //DOES NOT COMPILE incompatible types: List<String> cannot be converted to List<? super Object>
+		List<CharSequence> charwords = new ArrayList<>();
+		charwords.add("OCP");
+		System.out.println("==Printing list lowerbound CharSequence==");
+		printListLowerbound(charwords); //WORKS!!
 
 		List<? super IOException> exceptions = new ArrayList<Exception>();
 		//exceptions.add(new Exception()); // DOES NOT COMPILE because the list can be of IOException and Exception does not fit
@@ -67,6 +71,13 @@ public class BoundPrac {
 		//List<? super doAble> list9 = new ArrayList<C>(); //DOES NOT COMPILE
 		List<? super C> list10 = new ArrayList<doAble>();
 		list10.add(new C());
+
+		System.out.println("==Playing with Number->Integer ==");
+		List<? super Number> numberList = new ArrayList<>();
+		numberList.add(new Integer(56));
+		numberList.add(new Double(65));
+		System.out.println(numberList.get(0));
+		System.out.println(numberList.get(1));
 	}
 }
 class A {}
