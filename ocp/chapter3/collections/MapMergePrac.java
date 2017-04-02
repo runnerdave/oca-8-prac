@@ -11,11 +11,17 @@ public class MapMergePrac {
 
 		System.out.println(map); //choose option from list below
 
+
+		System.out.println("==lambda practice now==");
 		//use a lambda to substract now
 		map.merge(2, 3, (a,b) -> a - b);
 		System.out.println(map);//should be 2=17
 		map.merge(2, -3, (a,b) -> b - a);
 		System.out.println(map);//should be 2=-20 
+
+		map.put(3, null);
+		map.merge(3, 3, (a,b) -> null);
+		System.out.println(map);//should be 3=3
 	}
 }
 

@@ -16,6 +16,14 @@ public class BoundPrac {
 	public static void printListLowerboundObject(List<? super Object> list) {
 		for (Object x: list) System.out.println(x);
 	}
+	public static String extractStringFromUpperBound(List<? extends String> list) {
+		String str = list.get(0);
+		return str;
+	}
+	// public static String extractStringFromLowerBound(List<? super String> list) { DOES NOT COMPILE
+	// 	String str = list.get(0);
+	// 	return str;
+	// }
 	public static void main(String[] args) {
 		List<String> keywords = new ArrayList<>();
 		keywords.add("java");
@@ -31,6 +39,8 @@ public class BoundPrac {
 		charwords.add("OCP");
 		System.out.println("==Printing list lowerbound CharSequence==");
 		printListLowerbound(charwords); //WORKS!!
+		System.out.println("==Extracting String from Upperbound==");
+		System.out.println(extractStringFromUpperBound(keywords));
 
 		List<? super IOException> exceptions = new ArrayList<Exception>();
 		//exceptions.add(new Exception()); // DOES NOT COMPILE because the list can be of IOException and Exception does not fit
@@ -78,6 +88,8 @@ public class BoundPrac {
 		numberList.add(new Double(65));
 		System.out.println(numberList.get(0));
 		System.out.println(numberList.get(1));
+		//Number nn = numberList.get(0); DOES NOT COMPILE
+		Object nn = numberList.get(0);
 	}
 }
 class A {}
