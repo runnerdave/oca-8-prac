@@ -27,7 +27,7 @@ c. It will always print String1 and String2 in random order followed by end.
 d. It will always print end first.
 e. No order is guaranteed.
 
-Answer e.
+Answer b.
 Although two new threads are created but none of them is started 
 (remember run() does not start a thread. start() does)
 Here, run is called just like any other ordinary method in the main thread.

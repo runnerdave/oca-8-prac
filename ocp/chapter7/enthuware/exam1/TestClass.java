@@ -25,5 +25,8 @@ public class TestClass implements Runnable
 	The output cannot be determined
 
 	Answer E:
-	Note that when you create and start a new Thread (at line 1) there are two threads running. (The main() thread and the thread that you just started!). Both the threads are trying to use the same variable. Now, which thread will run first cannot be determined so whether the main() thread reads 'x' first or the new thread changes 'x' first is not known. So the output of the program cannot be determined.
+	Note that when you create and start a new Thread (at line 1) there are two threads running. (The main() thread and the thread that you just started!). 
+  Both the threads are trying to use the same variable. 
+  Now, which thread will run first cannot be determined so whether the main() thread reads 'x' first or the new thread changes 'x' first is not known. 
+  So the output of the program cannot be determined.
 */

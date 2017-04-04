@@ -27,7 +27,7 @@ public class SheepManager {
 			for(int i=0; i<10; i++) {
 				service.submit(() -> manager.incrementAndReport());
 			}	
-			/**service = Executors.newFixedThreadPool(10);
+			/** service = Executors.newFixedThreadPool(10);
 			SheepManager managerAtomic = new SheepManager();
 			System.out.println("\natomic: ");
 			for(int i=0; i<10; i++) {
