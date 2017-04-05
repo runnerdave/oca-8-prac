@@ -33,6 +33,14 @@ public class PathPracEnthuware {
 
 	answer:
 
+
+
+
+
+
+
+	
+
 	d.
 
 	Files.copy method will copy the file test1.txt into test2.txt. If test2.txt doesn't exist, 
