@@ -83,13 +83,18 @@ public class BoundPrac {
 		list10.add(new C());
 
 		System.out.println("==Playing with Number->Integer ==");
-		List<? super Number> numberList = new ArrayList<>();
-		numberList.add(new Integer(56));
-		numberList.add(new Double(65));
-		System.out.println(numberList.get(0));
-		System.out.println(numberList.get(1));
-		//Number nn = numberList.get(0); DOES NOT COMPILE
-		Object nn = numberList.get(0);
+		List<? super Number> numberListLowerBound = new ArrayList<>();
+		numberListLowerBound.add(new Integer(56));
+		numberListLowerBound.add(new Double(65));
+		System.out.println(numberListLowerBound.get(0));
+		System.out.println(numberListLowerBound.get(1));
+
+		
+		List<Number> numberList = new ArrayList<>();
+		numberList.add(new Integer(66));
+		List<? extends Number> numberListUpperBound = new ArrayList<>(numberList);
+		Number i = numberListUpperBound.get(0);
+		System.out.println(i);
 	}
 }
 class A {}

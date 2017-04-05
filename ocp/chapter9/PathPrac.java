@@ -31,10 +31,14 @@ public class PathPrac {
 		System.out.println("====path5.relativize(path4)====");
 		System.out.println(path5.relativize(path4));
 
-		Path path6 = Paths.get("E:\\habitat");
+		// Path path6 = Paths.get("E:\\habitat");
+		//linux version
+		Path path6 = Paths.get("/E/habitat");
 		System.out.println("====Path6====");
 		printPathInformation(path6);
-		Path path7 = Paths.get("E:\\sanctuary\\raven");
+		//Path path7 = Paths.get("E:\\sanctuary\\raven");
+		//linux version
+		Path path7 = Paths.get("/E/sanctuary/raven");
 		System.out.println("====Path7====");
 		printPathInformation(path7);
 		System.out.println("====path6.relativize(path7)====");
@@ -107,7 +111,9 @@ public class PathPrac {
 		//linux version
 		Path p15 = Paths.get("//photos//vacation");
 		Path p16 = Paths.get("//yellowstone");
-		System.out.println(p15.resolve(p16)+"  "+p15.relativize(p16));
+		System.out.println("p15.resolve(p16):" + p15.resolve(p16));
+		System.out.println("p16.resolve(p15):" + p16.resolve(p15));
+		System.out.println("p15.relativize(p16):" + p15.relativize(p16));
 
 
 	}

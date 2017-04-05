@@ -23,7 +23,7 @@ public class ForkJoinPrac {
 		// Print results
 		System.out.println(); 
 		System.out.print("Weights: "); 
-		Arrays.asList(weights).stream().forEach(d -> System.out.print(d.intValue()+" "));
+		Arrays.asList(weights).forEach(d -> System.out.print(d.intValue()+" "));
 	}
 }
 
