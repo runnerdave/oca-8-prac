@@ -34,6 +34,8 @@ public class OptionalPrac {
 		System.out.println(average().orElseGet(()->0.0));
 		//System.out.println(average().orElseGet(()->"nothing")); //DOES NOT COMPILE, incompatible types: String cannot be converted to Double
 
+		System.out.println(Optional.of(2.0));
+
 		try {
 			System.out.println(average(90, 100).orElseThrow(Exception::new));//no exception thrown
 			average().orElseThrow(()->new Exception("nothing"));

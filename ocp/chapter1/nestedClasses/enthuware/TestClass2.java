@@ -13,10 +13,17 @@ public class TestClass2
       }
       //1
       new TestClass2().new A();
-      new TestClass2().new B();
-      new TestClass2.A();
-      new C();
-      new TestClass2.C();
+
+      // new TestClass2().new B();  error: qualified new of static class
+
+      //new TestClass2.A(); error: non-static variable this cannot be referenced from a static context
+
+      new C(); 
+
+      // new TestClass2.C();  error: cannot find symbol
+
+      //my own thing
+      new TestClass2.B();
    }
 }
 

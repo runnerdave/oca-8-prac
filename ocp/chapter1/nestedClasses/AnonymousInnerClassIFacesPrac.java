@@ -7,7 +7,7 @@ interface MyInterfaceII {
     String printSomethingWithArg(String str);
 }
 
-public class AnonymousInnerClassPrac {
+public class AnonymousInnerClassIFacesPrac {
     
     public static void main(String... args) {
         System.out.println("===Anonymous inner class example===");
