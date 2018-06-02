@@ -1,12 +1,14 @@
-//q57
+package ocp.chapter7.enthuware.exam2;//q57
+
+import java.io.FileReader;
 
 public class Q57 {
 
 	public static void reader(String fileName1) throws Exception{
-		try (FileReader fr = new FileReader(fileName1);) {  
+		try (FileReader fr = new FileReader(fileName1);) {
 			int charRead = 0;
 			while ((charRead = fr.read()) != -1) {
-			            System.out.println("Read char " + charRead);
+				System.out.println("Read char " + charRead);
 			}
 		}
 	}

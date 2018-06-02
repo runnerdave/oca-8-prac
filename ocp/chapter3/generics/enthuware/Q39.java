@@ -1,4 +1,4 @@
-//exam 2 q39
+package ocp.chapter3.generics.enthuware;//exam 2 q39
 
 import java.util.*; 
 
@@ -34,7 +34,7 @@ Therefore, the type specification will be <E extends CharSequence>.
 
 2. getWordsStartingWith() method takes elements from the input collection and adds them to returnValue collection. 
 Since it does not know the type of elements in 'input' the only way to specify the output collection is to use the same type (E) as the input. 
-Thus, the return type should be  Collection < E >  
+Thus, the return type should beï¿½ï¿½Collection < E >  
 
 3. You cannot instantiate a Collection because it is an abstract class. So you must instantiate ArrayList with the same type (E).  
 
